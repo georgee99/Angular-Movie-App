@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MovieService } from './services/movie.service'
 
 @Component({
   selector: 'app-root',
@@ -11,6 +10,5 @@ export class AppComponent {
   title = 'test-angular-app';
   // Change this title later on to something legitimate
 
-  constructor(private movie: MovieService){
-  }
+  constructor(){}
 }

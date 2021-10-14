@@ -13,7 +13,7 @@ import { CardsComponent } from './components/cards/cards.component';
 
 const appRoutes: Routes = [
   {path: '', component: CardsComponent}, //Home page has empty string for route path
-  {path: 'moviePage/:id/:title', component: MoviePageComponent},
+  {path: 'moviePage/:id/:title/:poster_path/:overview', component: MoviePageComponent},
   {path: 'moviePage', component: MoviePageComponent},
 
 

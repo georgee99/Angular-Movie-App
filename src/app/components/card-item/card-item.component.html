@@ -1,5 +1,5 @@
 <div >
-  <a [routerLink]="['moviePage', movie.id, movie.title]">
+  <a [routerLink]="['moviePage', movie.id, movie.title, movie.poster_path, movie.overview]">
     <ng-container class="card">
       <nz-card class="card-inside" nzHoverable [nzCover]="coverTemplate">
         <nz-card-meta nzTitle="{{ movie.title }}" nzDescription="{{ movie.overview }}"></nz-card-meta>

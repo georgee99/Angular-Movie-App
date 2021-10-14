@@ -1,7 +1,20 @@
-<p>movie-page works!</p>
 <a routerLink = "/">Go back</a>
-<p>{{ movieId }}</p>
-<p>{{ movieName }}</p>
+<!-- <div class="container"> -->
+    <div class="photo">
+        <img src="https://image.tmdb.org/t/p/w500/{{ moviePoster }}"/>
+    </div>
+    <div class="details">
+        <h1>{{ movieName }}</h1>
+        <p>{{ movieId }}</p>
+        <p>{{ movieOverview }}</p>
+    </div>
+<!-- </div> -->
+
+<!-- <div class="container">
+    <div class="Image"></div>
+    <div class="Details"></div>
+</div> -->
+
 <!-- Dont forget to add the not found page -->
 <!-- Will need to find a better way to pass data between routes -->
 <!-- Passing from card-item -->

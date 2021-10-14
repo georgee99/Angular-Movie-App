@@ -10,6 +10,9 @@ import { MovieService } from 'src/app/services/movie.service';
 export class MoviePageComponent implements OnInit {
   movieId: any;
   movieName: any;
+  moviePoster: any;
+  movieOverview: any;
+  similarMovies: any = [];
   constructor(private route: ActivatedRoute, private movie: MovieService) { }
 
   ngOnInit(): void {
@@ -17,12 +20,25 @@ export class MoviePageComponent implements OnInit {
     // Load related movies here
     // https://api.themoviedb.org/3/movie/550/similar?api_key=b45808cfc639faa44235410b835b0912
 
+    
+
     this.route.paramMap.subscribe(params => {
       // console.log(params); Parse Int if it doesnt work
       this.movieId = params.get('id');
       console.log("Movie id: " + this.movieId)
       this.movieName = params.get('title');
       console.log("Movie name: " + this.movieName)
+      this.moviePoster = params.get('poster_path')
+      console.log("Poster path: " + this.moviePoster);
+      this.movieOverview = params.get('overview')
+      console.log("Overview " + this.movieOverview)
+    })
+
+
+    // Retrieving similar movies
+    this.movie.getSimilarMovies(this.movieId).subscribe(movie => {
+      console.warn(movie)
+      this.similarMovies = movie;
     })
   }
 }
