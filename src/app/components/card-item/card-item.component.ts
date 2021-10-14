@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MoviesInt } from 'src/app/MoviesInt';
 
 @Component({
   selector: 'app-card-item',

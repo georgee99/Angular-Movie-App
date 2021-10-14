@@ -1,10 +1,10 @@
 <div >
-  <a routerLink="/moviePage">
-  <ng-container class="card">
-    <nz-card class="card-inside" nzHoverable [nzCover]="coverTemplate">
-      <nz-card-meta nzTitle="{{ movie.title }}" nzDescription="{{ movie.overview }}"></nz-card-meta>
-    </nz-card>
-    <ng-template #coverTemplate>
+  <a [routerLink]="['moviePage', movie.id, movie.title]">
+    <ng-container class="card">
+      <nz-card class="card-inside" nzHoverable [nzCover]="coverTemplate">
+        <nz-card-meta nzTitle="{{ movie.title }}" nzDescription="{{ movie.overview }}"></nz-card-meta>
+      </nz-card>
+      <ng-template #coverTemplate>
         <img alt="example" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
       </ng-template>
     </ng-container>

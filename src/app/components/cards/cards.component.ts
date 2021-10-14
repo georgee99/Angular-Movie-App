@@ -1,7 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { MoviesInt } from 'src/app/MoviesInt';
-import { Observable } from 'rxjs';
 import { MovieService } from 'src/app/services/movie.service';
 
 @Component({
@@ -10,8 +8,8 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  myArr: any = []
-  myMovieArr: any = []
+  myArr: any = [] //Genres
+  @Output() myMovieArr: any = new EventEmitter<any[]>(); //Actual movies
   constructor(private movie: MovieService) { }
 
   ngOnInit(): void {
@@ -19,6 +17,8 @@ export class CardsComponent implements OnInit {
       console.warn(movie)
       this.myMovieArr = movie;
     })
+
+    console.log(this.myMovieArr)
   }
 
 
@@ -39,5 +39,9 @@ export class CardsComponent implements OnInit {
   getMovieId(movies: MoviesInt){
     console.log(movies)
     // Uses this as the button for router
+  }
+
+  emitMovies(): void{
+    
   }
 }

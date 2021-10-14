@@ -6,14 +6,17 @@ import { NzButtonModule, NzButtonSize } from 'ng-zorro-antd/button';
 import { AppComponent } from './app.component';
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { CardItemComponent } from './components/card-item/card-item.component';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, UrlSegment } from '@angular/router';
 import { MoviePageComponent } from './components/movie-page/movie-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CardsComponent } from './components/cards/cards.component';
 
 const appRoutes: Routes = [
   {path: '', component: CardsComponent}, //Home page has empty string for route path
-  {path: 'moviePage', component: MoviePageComponent}
+  {path: 'moviePage/:id/:title', component: MoviePageComponent},
+  {path: 'moviePage', component: MoviePageComponent},
+
+
 ]
 
 @NgModule({
