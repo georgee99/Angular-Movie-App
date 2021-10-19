@@ -10,7 +10,8 @@ describe('MoviePageComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ MoviePageComponent ],
-      imports: [ RouterModule ]
+      imports: [ RouterModule , HttpClientModule]
+      
     })
     .compileComponents();
   });

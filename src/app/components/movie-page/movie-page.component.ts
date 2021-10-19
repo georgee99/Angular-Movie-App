@@ -9,35 +9,43 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class MoviePageComponent implements OnInit {
   movieId: any;
+  movieIdInt: number;
   movieName: any;
   moviePoster: any;
   movieOverview: any;
+  moviePop: number;
   similarMovies: any = [];
+  newMovieArr: any = [];
   constructor(private route: ActivatedRoute, private movie: MovieService) { }
 
-  ngOnInit(): void {
-
-    // Load related movies here
-    // https://api.themoviedb.org/3/movie/550/similar?api_key=b45808cfc639faa44235410b835b0912
-
-    
+  ngOnInit(): void { 
 
     this.route.paramMap.subscribe(params => {
-      // console.log(params); Parse Int if it doesnt work
       this.movieId = params.get('id');
-      console.log("Movie id: " + this.movieId)
-      this.movieName = params.get('title');
-      console.log("Movie name: " + this.movieName)
-      this.moviePoster = params.get('poster_path')
-      console.log("Poster path: " + this.moviePoster);
-      this.movieOverview = params.get('overview')
-      console.log("Overview " + this.movieOverview)
+      this.movieIdInt = parseInt(this.movieId)
+      console.log("Movie Id: " + this.movieIdInt)
     })
 
+    this.movie.getMovies().subscribe(movie => {
+      this.newMovieArr = movie;
+      for(let i = 0; i<this.newMovieArr.length; i++){
+        if(this.movieIdInt === this.newMovieArr[i]["id"]){
+          console.log("movie id " + this.movieIdInt)
+          this.movieName = this.newMovieArr[i]["original_title"]
+          console.log("movie name: " + this.movieName)
+          this.moviePoster = this.newMovieArr[i]["poster_path"]
+          console.log("movie poster: " + this.moviePoster)
+          this.movieOverview = this.newMovieArr[i]["overview"]
+          console.log("movie overview: " + this.movieOverview)
+          this.moviePop = this.newMovieArr[i]["popularity"]
+          console.log("movie popularity: " + this.moviePop)
+        }
+      }
+    })
 
     // Retrieving similar movies
     this.movie.getSimilarMovies(this.movieId).subscribe(movie => {
-      console.warn(movie)
+      // console.warn(movie)
       this.similarMovies = movie;
     })
   }
