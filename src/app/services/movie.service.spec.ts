@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
 import { MoviesInt } from '../MoviesInt';
@@ -9,7 +9,9 @@ describe('MovieService', () => {
   let HttpClientSpy: { get: jasmine.Spy }
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      imports: [ HttpClientModule ]
+      });
     movieService = TestBed.inject(MovieService);
   });
 
@@ -26,13 +28,13 @@ describe('MovieService', () => {
 
   it('should return the sci-fi movies', (done: DoneFn) => {
     const expectedMovies: MoviesInt[] = 
-    [{id: 1, title: 'Venom'}] //Change this up later to match actual results, or to contain
+    [{id: 580489, title: 'Venom: Let There Be Carnage'}] //Change this up later to match actual results, or to contain
 
     HttpClientSpy.get.and.returnValue(of(expectedMovies));
 
     movieService.getMovies().subscribe(
       movies => {
-      expect(movies).withContext('some text').toContain(expectedMovies, 'expected Movies');
+      expect(movies).toContain(expectedMovies);
       done();
     },
       done.fail
@@ -53,9 +55,9 @@ describe('MovieService', () => {
     movieService.getMovies().subscribe(
       movies=> done.fail('expected an error, not movies'),
       error => {
-        expect(error.message).toContain('test 404 error');
-        done;
+        expect(error.message).toContain('404');
+        done();
       }
     );  
-  })
+  });
 })

@@ -9,7 +9,8 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class CardsComponent implements OnInit {
   myArr: any = [] //Genres
-  @Output() myMovieArr: any = new EventEmitter<any[]>(); //Actual movies
+  // @Output() myMovieArr: any = new EventEmitter<any[]>(); //Actual movies
+  myMovieArr: any = []
   constructor(private movie: MovieService) { }
 
   ngOnInit(): void {
@@ -24,7 +25,6 @@ export class CardsComponent implements OnInit {
 
   getMovieGenres(): void {
     this.movie.getMovieGenres().subscribe(movie => {
-      console.warn(movie)
       this.myArr = movie;
     })
   }
@@ -34,14 +34,5 @@ export class CardsComponent implements OnInit {
       console.warn(movie)
       this.myMovieArr = movie;
     })
-  }
-
-  getMovieId(movies: MoviesInt){
-    console.log(movies)
-    // Uses this as the button for router
-  }
-
-  emitMovies(): void{
-    
   }
 }
