@@ -10,8 +10,8 @@
 
 
 img {
-    height: 425px;
-    width: auto;
+    height: auto;
+    width: 100%;
     /* width: 100%; */
     /* display: flex;
     align-items: center;

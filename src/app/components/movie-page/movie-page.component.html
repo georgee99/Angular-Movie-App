@@ -1,7 +1,9 @@
 <a routerLink = "/">Go back</a>
 <div class="box">
     <div class="photo">
-        <img src="https://image.tmdb.org/t/p/w500/{{ moviePoster }}"/>
+         <div class="photo-container">
+             <img src="https://image.tmdb.org/t/p/w500/{{ moviePoster }}"/>
+         </div>
     </div>
     <div class="details">
         <h1>{{ movieName }}</h1>
@@ -9,7 +11,7 @@
     </div>
 </div>
 <!-- Similar movies under here -->
-<div>
+<div class="sim-container">
     <h1>Similar Movies</h1>
     <div class="cards">
         <app-similar-card-item *ngFor="let movie of similarMovies" [movie]="movie"></app-similar-card-item>
