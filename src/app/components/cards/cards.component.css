@@ -1,10 +1,33 @@
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    /* gap: 1rem; */
 }
 
 /* .card-inside{
     padding: 20px;
     margin: 20px;
 } */
+.ret-btn{
+    font-size: 20px;
+    /* text-align: center; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #DB1F48;
+    cursor: pointer;
+    transition: background-color 1s;
+}
+
+.ret-btn:hover {
+    background-color:#004369;
+}
+
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}

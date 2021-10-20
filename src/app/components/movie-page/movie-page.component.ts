@@ -14,8 +14,9 @@ export class MoviePageComponent implements OnInit {
   moviePoster: any;
   movieOverview: any;
   moviePop: number;
-  similarMovies: any = [];
   newMovieArr: any = [];
+  similarMovies: any = [];
+  
   constructor(private route: ActivatedRoute, private movie: MovieService) { }
 
   ngOnInit(): void { 
@@ -45,8 +46,9 @@ export class MoviePageComponent implements OnInit {
 
     // Retrieving similar movies
     this.movie.getSimilarMovies(this.movieId).subscribe(movie => {
-      // console.warn(movie)
       this.similarMovies = movie;
+      this.similarMovies = this.similarMovies.slice(0,6)
+      console.log(this.similarMovies)
     })
   }
 }

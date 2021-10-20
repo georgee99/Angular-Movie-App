@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
-import { Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { map } from "rxjs/operators"; 
 import { MoviesInt } from '../MoviesInt';
-
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +29,4 @@ export class MovieService {
     let url = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=b45808cfc639faa44235410b835b0912`
     return this.http.get(url).pipe(map((data: any) => data.results))
   }
-
 }
