@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
+import { faSmile, faSadCry, faMeh } from '@fortawesome/free-solid-svg-icons';
+// import { faSmile } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-movie-page',
@@ -16,7 +18,11 @@ export class MoviePageComponent implements OnInit {
   moviePop: number;
   newMovieArr: any = [];
   similarMovies: any = [];
-  
+  // Icons
+  faSmile = faSmile;
+  faSadCry = faSadCry;
+  faMeh = faMeh;
+
   constructor(private route: ActivatedRoute, private movie: MovieService) { }
 
   ngOnInit(): void { 

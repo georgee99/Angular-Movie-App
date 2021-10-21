@@ -15,9 +15,6 @@ a:hover {
 .box {
     display: flex;
     flex-wrap: wrap;
-    /* align-content: space-between; */
-    /* justify-content: space-between; */
-    /* justify-content: space-evenly; */
     align-content: center;
     padding: 2rem 0;
 }
@@ -57,6 +54,45 @@ img:hover{
 
 .details > p {
     font-size: 20px;
+}
+
+.emotions {
+    display: flex;
+    flex-direction: column;
+}
+
+.emotions-container {
+    align-items: center;
+    margin-left: 10rem;
+}
+
+.emotions-container > h3 {
+    font-size: 30px;
+}
+
+.emotions-container fa-icon {
+    font-size: 50px;
+    margin: 2rem;
+    cursor: pointer;
+    transition: color 0.25s;
+}
+
+.emotions-container .smileEm:hover {
+    color: #EDF939;
+}
+
+.emotions-container .sadEm:hover {
+    color: #808080;
+}
+
+.emotions-container .mehEm:hover {
+    color: #9ACAD8;
+}
+
+.emoji-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cards {

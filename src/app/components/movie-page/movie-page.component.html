@@ -3,13 +3,24 @@
     <div class="photo">
          <div class="photo-container">
              <img src="https://image.tmdb.org/t/p/w500/{{ moviePoster }}"/>
-         </div>
+        </div>
     </div>
     <div class="details">
         <h1>{{ movieName }}</h1>
         <p>{{ movieOverview }}</p>
     </div>
+    <div class="emotions">
+        <div class="emotions-container">
+            <h3>Tag this movie with an emotion below!</h3>
+            <div class="emoji-list">
+                <fa-icon class="smileEm" [icon]="faSmile"></fa-icon>
+                <fa-icon class="sadEm" [icon]="faSadCry"></fa-icon>
+                <fa-icon class="mehEm" [icon]="faMeh"></fa-icon>
+            </div>
+        </div>
+    </div>
 </div>
+
 <!-- Similar movies under here -->
 <div class="sim-container">
     <h1>Similar Movies</h1>

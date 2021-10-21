@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { SimilarCardItemComponent } from './components/similar-card-item/similar-card-item.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 
 const appRoutes: Routes = [
   {path: '', component: CardsComponent}, //Home page has empty string for route path
@@ -35,6 +36,7 @@ const appRoutes: Routes = [
     NzCardModule,
     NzCheckboxModule,
     FormsModule,
+    FontAwesomeModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
   providers: [HttpClientModule],
