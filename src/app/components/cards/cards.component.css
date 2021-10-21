@@ -4,16 +4,20 @@
     /* gap: 1rem; */
 }
 
+app-card-item {
+    transition: transform .2s
+}
+
+app-card-item:hover {
+    transform: scale(1.05);
+}
+
 @media screen and (max-width: 1100px){
     .cards {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-/* .card-inside{
-    padding: 20px;
-    margin: 20px;
-} */
 .ret-btn{
     font-size: 20px;
     /* text-align: center; */
@@ -36,4 +40,5 @@
     justify-content: center;
     flex-direction: column;
     gap: 1rem;
+    margin: 1rem;
 }

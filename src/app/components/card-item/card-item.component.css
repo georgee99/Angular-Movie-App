@@ -1,32 +1,11 @@
-.cards {
-    /* display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem; */
-    /* cursor: none; */
-    /* display: flex;
-    align-items: stretch; */
-}
-
-
-
 img {
     height: auto;
     width: 100%;
-    /* width: 100%; */
-    /* display: flex;
-    align-items: center;
-    justify-content: center; */
-    /* text-align: center; */
     object-fit: cover;
-
 }
 
 .card-inside{
     padding: 10px;
     margin: 20px;
 }
-
-/* a {
-    display: none;
-} */
 
