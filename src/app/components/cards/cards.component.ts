@@ -27,14 +27,23 @@ export class CardsComponent implements OnInit {
     this.movie.getMovies().subscribe(movie => {
       console.warn(movie)
       this.myMovieArr = movie;
+
+      if(localStorage.getItem('toDelete') !== null){
+        let a:any = localStorage.getItem('toDelete')
+        a = parseInt(a)
+        for(let i = 0; i<this.myMovieArr.length; i++){
+          if(this.myMovieArr[i]["id"] === a){
+            this.myMovieArr = this.myMovieArr.filter((item: any) => item!==this.myMovieArr[i])
+          }
+        }
+        localStorage.removeItem('toDelete')
+      }
     })
-  }
+  } // End of ngOnInit
 
   log(value: object[]): void {
     console.log(value[1]);
-    
     this.myMovieArr = this.myMovieArr.filter((item: any) => item !== this.myMovieArr[this.checkOptionsOne[1]["value"]])
-
   }
 
   getMovieGenres(): void {
@@ -49,6 +58,8 @@ export class CardsComponent implements OnInit {
       this.myMovieArr = movie;
     })
   }
+
+  // Dont need removeMovie method anymore
 
   removeMovie(answer: any): void {
     answer = prompt("Which movie you wanna delete")

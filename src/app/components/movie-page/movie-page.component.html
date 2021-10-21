@@ -12,14 +12,18 @@
     <div class="emotions">
         <div class="emotions-container">
             <h3>Tag this movie with an emotion below!</h3>
-            <div class="emoji-list">
-                <fa-icon class="smileEm" [icon]="faSmile"></fa-icon>
+            <div class="emoji-list" (dblclick)="removeSmile()">
+                <fa-icon (click) = "clickSmile()"  class="smileEm" [icon]="faSmile"></fa-icon>
                 <fa-icon class="sadEm" [icon]="faSadCry"></fa-icon>
                 <fa-icon class="mehEm" [icon]="faMeh"></fa-icon>
+            </div>
+            <div class="delete-button-container">
+                <button class="delete-button"(click) = "deleteThisMovie()">REMOVE MOVIE</button>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Similar movies under here -->
 <div class="sim-container">
@@ -28,7 +32,6 @@
         <app-similar-card-item *ngFor="let movie of similarMovies" [movie]="movie"></app-similar-card-item>
     </div>
 </div>
-
 <!-- Dont forget to add the not found page -->
 <!-- Will need to find a better way to pass data between routes -->
 <!-- Passing from card-item -->

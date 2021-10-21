@@ -57,4 +57,24 @@ export class MoviePageComponent implements OnInit {
       console.log(this.similarMovies)
     })
   }
+
+  clickSmile():void {
+    localStorage.setItem('emotion', 'happy')
+    console.log('test')
+    setTimeout(() =>  5000);
+  }
+
+  removeSmile():void {
+    console.log("removed emotion")
+    localStorage.removeItem('emotion')
+  }
+
+  deleteThisMovie(){
+    let res = confirm("Are you sure? You cannot undo this action")
+    if(res == true){
+      localStorage.setItem('toDelete', this.movieId)
+    }
+    alert(this.movieName + " has been deleted")
+
+  }
 }
