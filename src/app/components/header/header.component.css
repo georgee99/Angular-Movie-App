@@ -1,6 +1,24 @@
+.header {
+    display: flex;
+}
+
+.link{
+    flex: 1;
+    margin-left: 3rem;
+}
+
+a {
+    font-size: 50px;
+}
+
+a:hover {
+    color: aqua;
+}
+
+.empty {
+    flex: 1;
+}
+
 h1 {
     font-size: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
