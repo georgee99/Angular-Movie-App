@@ -1,6 +1,7 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CardsComponent } from './cards.component';
+import { By } from '@angular/platform-browser';
 
 describe('CardsComponent', () => {
   let component: CardsComponent;
@@ -23,4 +24,11 @@ describe('CardsComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should load images', () => {
+    const compiled = fixture.debugElement.nativeElement;
+    // expect(compiled.querySelector('img').textContent)
+    let thing = fixture.debugElement.query(By.css('.cards'))
+    expect(thing).toBeTruthy()
+  })
 });
