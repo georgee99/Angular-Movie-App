@@ -1,11 +1,13 @@
-<!-- <a routerLink = "/">Home</a> -->
-
 <div class="center">
     <!-- <button class="ret-btn" (click)="removeMovie(dell)">Delete which movie</button>   -->
     <nz-checkbox-group [(ngModel)]="checkOptionsOne" (ngModelChange)="log(checkOptionsOne)"></nz-checkbox-group>
+    <input type="checkbox" [(ngModel)] = "enableFilter" >enable Filter
+    <p>{{ enableFilter }}</p>
 </div>
 
 
 <div class="cards" >
-    <app-card-item *ngFor="let movie of myMovieArr" [movie]="movie"></app-card-item>
+    <app-card-item *ngFor="let movie of myMovieArr | filter:enableFilter" 
+     [movie]="movie">
+    </app-card-item>
 </div>
