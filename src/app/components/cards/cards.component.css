@@ -1,11 +1,13 @@
 .cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    /* gap: 1rem; */
+    /* gap: 2rem; */
+    margin: 0 4rem;
 }
 
 app-card-item {
-    transition: transform .2s
+    transition: transform .2s;
+    margin: 0 1rem
 }
 
 app-card-item:hover {
@@ -18,27 +20,15 @@ app-card-item:hover {
     }
 }
 
-.ret-btn{
-    font-size: 20px;
-    /* text-align: center; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #DB1F48;
-    cursor: pointer;
-    transition: background-color 1s;
-}
-
-.ret-btn:hover {
-    background-color:#004369;
-}
-
-
 .center {
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
     margin: 1rem;
+}
+
+label {
+    padding: 1em;
 }

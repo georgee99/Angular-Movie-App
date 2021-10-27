@@ -74,19 +74,22 @@ img:hover{
     font-size: 50px;
     margin: 2rem;
     cursor: pointer;
-    transition: color 0.25s;
+    transition: 0.3s;
 }
 
 .emotions-container .smileEm:hover {
     color: #EDF939;
+    transform: scale(1.05)
 }
 
 .emotions-container .sadEm:hover {
-    color: #808080;
+    color: #9ACAD8;
+    transform: scale(1.05)
 }
 
 .emotions-container .mehEm:hover {
-    color: #9ACAD8;
+    color: #808080;
+    transform: scale(1.05)
 }
 
 .emoji-list {
@@ -127,10 +130,16 @@ img:hover{
     margin-right: 3rem;
 }
 
+.sim-container{
+    margin: 2rem 0;
+}
+
 .sim-container > h1 {
+    margin-left: 4rem;
     font-size: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    margin-left: 4rem;
+    font-family: 'Staatliches', cursive;
+
 }
 
 app-similar-card-item{

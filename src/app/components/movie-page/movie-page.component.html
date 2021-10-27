@@ -1,4 +1,3 @@
-<!-- <a routerLink = "/">Go back</a> -->
 <div class="box">
     <div class="photo">
          <div class="photo-container">
@@ -12,10 +11,10 @@
     <div class="emotions">
         <div class="emotions-container">
             <h3>Tag this movie with an emotion below!</h3>
-            <div class="emoji-list" (dblclick)="removeSmile()">
-                <fa-icon (click) = "clickSmile()"  class="smileEm" [icon]="faSmile"></fa-icon>
-                <fa-icon class="sadEm" [icon]="faSadCry"></fa-icon>
-                <fa-icon class="mehEm" [icon]="faMeh"></fa-icon>
+            <div class="emoji-list">
+                <fa-icon (click) = "clickSmile()" title="Happy" class="smileEm" [icon]="faSmile"></fa-icon>
+                <fa-icon (click) = "clickSad()" title="Sad" class="sadEm" [icon]="faSadCry"></fa-icon>
+                <fa-icon (click) = "clickMeh()" title="Meh" class="mehEm" [icon]="faMeh"></fa-icon>
             </div>
             <div class="delete-button-container">
                 <button class="delete-button"(click) = "deleteThisMovie()">REMOVE MOVIE</button>
@@ -23,7 +22,6 @@
         </div>
     </div>
 </div>
-
 
 <!-- Similar movies under here -->
 <div class="sim-container">
@@ -33,6 +31,4 @@
     </div>
 </div>
 <!-- Dont forget to add the not found page -->
-<!-- Will need to find a better way to pass data between routes -->
-<!-- Passing from card-item -->
 <!-- Also find a way to make URL SEO optimisable -->

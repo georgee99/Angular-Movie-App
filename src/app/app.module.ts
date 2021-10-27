@@ -12,12 +12,13 @@ import { HeaderComponent } from './components/header/header.component';
 import { CardsComponent } from './components/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { SimilarCardItemComponent } from './components/similar-card-item/similar-card-item.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FilterPipe } from './filter.pipe';
 
 const appRoutes: Routes = [
   {path: '', component: CardsComponent}, //Home page has empty string for route path
   {path: 'moviePage/:id', component: MoviePageComponent},
-  {path: 'moviePage', component: MoviePageComponent},
+  // {path: 'moviePage', component: MoviePageComponent},
 ]
 
 @NgModule({
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     MoviePageComponent,
     HeaderComponent,
     CardsComponent,
-    SimilarCardItemComponent
+    SimilarCardItemComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
