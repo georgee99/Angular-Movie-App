@@ -22,7 +22,8 @@ export class MoviePageComponent implements OnInit {
   faSmile = faSmile;
   faSadCry = faSadCry;
   faMeh = faMeh;
-  
+  clickCount:number = 1;
+
   constructor(private route: ActivatedRoute, private movie: MovieService) { }
 
   ngOnInit(): void { 
@@ -58,15 +59,14 @@ export class MoviePageComponent implements OnInit {
   getLocalStorage():any{
     return localStorage.getItem(this.movieId + "emotion")
   }
-  
+
   clickSmile():void {
     this.movieEmotionObj = {
       "movieId": this.movieIdInt,
-      "emotion": "happy",
-      "count": 0
+      "emotion": "happy"
     }
-    this.movieEmotionObj["count"] ++;
-    // every second click, increment the count 
+    this.clickCount++;
+    localStorage.setItem(this.movieId + 'clickCountHappy', (this.clickCount).toString())
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "happy"){
@@ -82,11 +82,10 @@ export class MoviePageComponent implements OnInit {
   clickSad():void {
     this.movieEmotionObj = {
       "movieId": this.movieIdInt,
-      "emotion": "sad",
-      "count": 0
+      "emotion": "sad"
     }
-    this.movieEmotionObj["count"] ++;
-
+    this.clickCount++;
+    localStorage.setItem(this.movieId + 'clickCountSad', (this.clickCount).toString())
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "sad"){
@@ -104,11 +103,10 @@ export class MoviePageComponent implements OnInit {
     console.log("Click Meh works")
     this.movieEmotionObj = {
       "movieId": this.movieIdInt,
-      "emotion": "meh",
-      "count": 0
+      "emotion": "meh"
     }
-    this.movieEmotionObj["count"] ++;
-
+    this.clickCount++;
+    localStorage.setItem(this.movieId + 'clickCountMeh', (this.clickCount).toString())
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "meh"){
@@ -119,6 +117,21 @@ export class MoviePageComponent implements OnInit {
       localStorage.setItem(this.movieId + "emotion", JSON.stringify(this.movieEmotionObj))
       alert("You have tagged this movie as meh")
     }
+  }
+
+  getSmileClickCount(){
+    let count:any = localStorage.getItem(this.movieId + 'clickCountHappy');
+    return count!=null ? Math.floor(count/2) : 0;
+  }
+
+  getSadClickCount(){
+    let count:any = localStorage.getItem(this.movieId + 'clickCountSad');
+    return count!=null ? Math.floor(count/2) : 0;
+  }
+
+  getMehClickCount(){
+    let count:any = localStorage.getItem(this.movieId + 'clickCountMeh');
+    return count!=null ? Math.floor(count/2) : "0";
   }
 
   deleteThisMovie(){

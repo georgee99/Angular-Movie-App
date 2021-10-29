@@ -10,13 +10,20 @@
     </div>
     <div class="emotions">
         <div class="emotions-container">
-            <!-- <h3>Tag this movie with an emotion below!</h3> -->
-            <h3>{{getLocalStorage() == null ? "Tag this movie with an emotion":
-                 "Remove the tag by clicking the icon again"}}</h3>
+            <h3>Tag this movie with an emotion below!</h3>
             <div class="emoji-list">
-                <fa-icon (click) = "clickSmile()" title="Happy" class="smileEm" [icon]="faSmile"></fa-icon>
-                <fa-icon (click) = "clickSad()" title="Sad" class="sadEm" [icon]="faSadCry"></fa-icon>
-                <fa-icon (click) = "clickMeh()" title="Meh" class="mehEm" [icon]="faMeh"></fa-icon>
+                <div class="count-num">
+                    <fa-icon (click) = "clickSmile()" title="Happy" class="smileEm" [icon]="faSmile"></fa-icon>
+                    <p>{{ getSmileClickCount()}}</p>
+                </div>
+                <div class="count-num">
+                    <fa-icon (click) = "clickSad()" title="Sad" class="sadEm" [icon]="faSadCry"></fa-icon>
+                    <p>{{ getSadClickCount() }}</p>
+                </div>
+                <div class="count-num">
+                    <fa-icon (click) = "clickMeh()" title="Meh" class="mehEm" [icon]="faMeh"></fa-icon>
+                    <p>{{ getMehClickCount() }}</p>
+                </div>
             </div>
             <div class="delete-button-container">
                 <button class="delete-button"(click) = "deleteThisMovie()">REMOVE MOVIE</button>
