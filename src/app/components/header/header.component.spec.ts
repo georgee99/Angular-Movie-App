@@ -25,11 +25,11 @@ describe('HeaderComponent', () => {
 
   it('should render title in a h1 tag', () => {
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Angular') 
+    expect(compiled.querySelector('h1').textContent).toContain('Geek') 
   });
 
   it('should render a specific title name', ()=> {
-    
+    // fill this in
   })
 
 });

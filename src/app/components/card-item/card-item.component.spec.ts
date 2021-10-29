@@ -1,6 +1,10 @@
 import { HttpClientModule } from '@angular/common/http';
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { CardItemComponent } from './card-item.component';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Router, RouterModule } from '@angular/router';
+import {CardItemComponent} from 'src/app/components/card-item/card-item.component'
+import { MoviePageComponent } from '../movie-page/movie-page.component'
+import {appRoutes} from '../../app.module'
 
 describe('CardItemComponent', () => {
   let component: CardItemComponent;
@@ -9,7 +13,7 @@ describe('CardItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CardItemComponent ],
-      imports: [ HttpClientModule ]
+      imports: [ HttpClientModule, RouterModule.forRoot([]) ]
     })
     .compileComponents();
   });
@@ -23,4 +27,9 @@ describe('CardItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should take you to movie page', fakeAsync(()=>{
+    const expectedRoute = {path: 'moviePage/:id', component: MoviePageComponent}
+    expect(appRoutes).toContain(expectedRoute)
+  }))
 });

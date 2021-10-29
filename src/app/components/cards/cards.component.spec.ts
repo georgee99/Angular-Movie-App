@@ -18,7 +18,8 @@ describe('CardsComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(CardsComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    // fixture.detectChanges();
+    // fixture.autoDetectChanges()
   });
 
   it('should create', () => {
@@ -26,9 +27,17 @@ describe('CardsComponent', () => {
   });
 
   it('should load images', () => {
-    const compiled = fixture.debugElement.nativeElement;
-    // expect(compiled.querySelector('img').textContent)
-    let thing = fixture.debugElement.query(By.css('.cards'))
+    // let thing = fixture.debugElement.query(By.css('.cards'))
+    fixture = TestBed.createComponent(CardsComponent);
+
+    fixture.detectChanges();
+    let thing = fixture.debugElement.nativeElement.query('app-card-item')
     expect(thing).toBeTruthy()
+  })
+
+  it('checkbox should be checked', ()=>{
+    let checkbox = fixture.debugElement.nativeElement.querySelector('label');
+    expect(checkbox).toBeTruthy()
+
   })
 });

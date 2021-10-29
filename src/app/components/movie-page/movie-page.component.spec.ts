@@ -1,12 +1,15 @@
-import { async, ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
 import { MoviePageComponent } from './movie-page.component';
-import { HttpErrorResponse, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { By } from '@angular/platform-browser';
+import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
 describe('MoviePageComponent', () => {
   let component: MoviePageComponent;
   let fixture: ComponentFixture<MoviePageComponent>;
+  let spectator: Spectator<MoviePageComponent>;
+  const createComponent = createComponentFactory(MoviePageComponent);
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -19,6 +22,7 @@ describe('MoviePageComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MoviePageComponent);
+    spectator = createComponent()
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -26,10 +30,6 @@ describe('MoviePageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  // it("should load similar movies", ()=>{
-  //   maybe do in movie service test component
-  // })
 
   it('should load images', () => {
     let mainImage = fixture.debugElement.query(By.css('.photo-container'))
@@ -49,17 +49,35 @@ describe('MoviePageComponent', () => {
   }) )
 
   it('emotions button should be called', fakeAsync(()=>{
-    let emotionButtons = fixture.debugElement.nativeElement.query('.smileEm.sadEm.mehEm');
-    // spyOn(component, 'clickSmile')
-    // spyOn(component, 'clickSad')
-    // spyOn(component, 'clickMeh');
-    emotionButtons.click();
-    tick();
+    let smButton = fixture.debugElement.nativeElement.querySelector('.smileEm')
+    let saButton = fixture.debugElement.nativeElement.querySelector('.sadEm')
+    let meButton = fixture.debugElement.nativeElement.querySelector('.mehEm')
+
+    spyOn(component, 'clickSmile')
+    spyOn(component, 'clickSad')
+    spyOn(component, 'clickMeh');
+    smButton.click(); saButton.click(); meButton.click();
     fixture.whenStable().then(()=> {
       expect(component.clickSmile).toHaveBeenCalled()
-      // expect(component.clickSad).toHaveBeenCalled()
-      // expect(component.clickMeh).toHaveBeenCalled()
-      // Haven't made these methods yet
+      expect(component.clickSad).toHaveBeenCalled()
+      expect(component.clickMeh).toHaveBeenCalled()
     })
   }))
+
+  // Spectator
+  it('should render movie title', ()=> {
+    let title = spectator.query('h1');
+    expect(title).toBeTruthy()
+  })
+
+  it('spectator button test happy', ()=> {
+    spectator.click('.smileEm')
+    expect(spectator.component.clickSmile).toHaveBeenCalled()
+
+    spectator.click('.sadEm')
+    expect(spectator.component.clickSad).toHaveBeenCalled()
+
+    spectator.click('.mehEm')
+    expect(spectator.component.clickMeh).toHaveBeenCalled()
+  })
 });

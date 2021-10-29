@@ -7,7 +7,7 @@ import { MovieService } from './movie.service';
 describe('MovieService', () => {
   let movieService: MovieService;
   let HttpClientSpy: { get: jasmine.Spy }
-
+  
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [ HttpClientModule ]
@@ -22,6 +22,7 @@ describe('MovieService', () => {
 
   // Testing HTTP client
   beforeEach(() => {
+  
     HttpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
     movieService = new MovieService(HttpClientSpy as any);
   });
@@ -44,9 +45,7 @@ describe('MovieService', () => {
     //   done();
     // },
     // done.fail
-    // );
-    
-    
+    // );     
 
     expect(HttpClientSpy.get.calls.count()).toBe(1);
     });
