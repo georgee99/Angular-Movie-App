@@ -19,13 +19,13 @@ export class CardsComponent implements OnInit {
     this.movie.getMovies().subscribe(movie => {
       console.warn(movie)
       this.myMovieArr = movie;
-      for(let i =0; i<this.myMovieArr.length; i++){
+      for(let i = 0; i<this.myMovieArr.length; i++){
         let a:any = localStorage.getItem(this.myMovieArr[i]["id"] + "toDelete")
         if(a !== null){
-          console.log(a)
-          this.myMovieArr = this.myMovieArr.filter((item: any) => item !==this.myMovieArr[i])
-          this.removedMovies.push(this.myMovieArr[i])
-          localStorage.setItem('removedMoviesList', JSON.stringify(this.removedMovies))
+          this.myMovieArr = this.myMovieArr.filter((item: any) => item.id !==this.myMovieArr[i]["id"])
+          i--;
+          // this.removedMovies.push(this.myMovieArr[i])
+          // localStorage.setItem('removedMoviesList', JSON.stringify(this.removedMovies))
         }
       }
     })
