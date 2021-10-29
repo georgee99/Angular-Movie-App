@@ -14,10 +14,13 @@ import { FormsModule } from '@angular/forms';
 import { SimilarCardItemComponent } from './components/similar-card-item/similar-card-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FilterPipe } from './filter.pipe';
+import { Pipe, PipeTransform } from '@angular/core';
+import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 
-const appRoutes: Routes = [
+export const appRoutes: Routes = [
   {path: '', component: CardsComponent}, //Home page has empty string for route path
   {path: 'moviePage/:id', component: MoviePageComponent},
+  {path: '**', component: NotFoundPageComponent}
   // {path: 'moviePage', component: MoviePageComponent},
 ]
 
@@ -29,7 +32,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     CardsComponent,
     SimilarCardItemComponent,
-    FilterPipe
+    FilterPipe,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
