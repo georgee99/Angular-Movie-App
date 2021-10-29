@@ -10,7 +10,9 @@
     </div>
     <div class="emotions">
         <div class="emotions-container">
-            <h3>Tag this movie with an emotion below!</h3>
+            <!-- <h3>Tag this movie with an emotion below!</h3> -->
+            <h3>{{getLocalStorage() == null ? "Tag this movie with an emotion":
+                 "Remove the tag by clicking the icon again"}}</h3>
             <div class="emoji-list">
                 <fa-icon (click) = "clickSmile()" title="Happy" class="smileEm" [icon]="faSmile"></fa-icon>
                 <fa-icon (click) = "clickSad()" title="Sad" class="sadEm" [icon]="faSadCry"></fa-icon>
@@ -30,5 +32,3 @@
         <app-similar-card-item *ngFor="let movie of similarMovies" [movie]="movie"></app-similar-card-item>
     </div>
 </div>
-<!-- Dont forget to add the not found page -->
-<!-- Also find a way to make URL SEO optimisable -->

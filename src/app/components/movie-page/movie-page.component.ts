@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { faSmile, faSadCry, faMeh } from '@fortawesome/free-solid-svg-icons';
-// import { faSmile } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-movie-page',
@@ -18,11 +17,12 @@ export class MoviePageComponent implements OnInit {
   moviePop: number;
   newMovieArr: any = [];
   similarMovies: any = [];
+  movieEmotionObj: any = {};
   // Icons
   faSmile = faSmile;
   faSadCry = faSadCry;
   faMeh = faMeh;
-
+  
   constructor(private route: ActivatedRoute, private movie: MovieService) { }
 
   ngOnInit(): void { 
@@ -41,11 +41,8 @@ export class MoviePageComponent implements OnInit {
           this.movieName = this.newMovieArr[i]["original_title"]
           console.log("movie name: " + this.movieName)
           this.moviePoster = this.newMovieArr[i]["poster_path"]
-          console.log("movie poster: " + this.moviePoster)
           this.movieOverview = this.newMovieArr[i]["overview"]
-          console.log("movie overview: " + this.movieOverview)
           this.moviePop = this.newMovieArr[i]["popularity"]
-          console.log("movie popularity: " + this.moviePop)
         }
       }
     })
@@ -58,23 +55,77 @@ export class MoviePageComponent implements OnInit {
     })
   }
 
+  getLocalStorage():any{
+    return localStorage.getItem(this.movieId + "emotion")
+  }
+  
   clickSmile():void {
-    localStorage.setItem('emotion', 'happy')
-    console.log('test')
-    setTimeout(() =>  5000);
+    this.movieEmotionObj = {
+      "movieId": this.movieIdInt,
+      "emotion": "happy",
+      "count": 0
+    }
+    this.movieEmotionObj["count"] ++;
+    // every second click, increment the count 
+    let em:any = localStorage.getItem(this.movieId + "emotion")
+    em = JSON.parse(em)
+    if(em != null && em["emotion"] == "happy"){
+      // remove emotion
+      localStorage.removeItem(this.movieId + "emotion")
+      alert("You have untagged this emotion")
+    } else {
+      localStorage.setItem(this.movieId + "emotion", JSON.stringify(this.movieEmotionObj))
+      alert("You have tagged this movie as happy")
+    }
   }
 
-  removeSmile():void {
-    console.log("removed emotion")
-    localStorage.removeItem('emotion')
+  clickSad():void {
+    this.movieEmotionObj = {
+      "movieId": this.movieIdInt,
+      "emotion": "sad",
+      "count": 0
+    }
+    this.movieEmotionObj["count"] ++;
+
+    let em:any = localStorage.getItem(this.movieId + "emotion")
+    em = JSON.parse(em)
+    if(em != null && em["emotion"] == "sad"){
+      // remove emotion
+      localStorage.removeItem(this.movieId + "emotion")
+      alert("You have untagged this emotion")
+    } else {
+      localStorage.setItem(this.movieId + "emotion", JSON.stringify(this.movieEmotionObj))
+      alert("You have tagged this movie as sad")
+
+    }  
+  }
+
+  clickMeh(): void {
+    console.log("Click Meh works")
+    this.movieEmotionObj = {
+      "movieId": this.movieIdInt,
+      "emotion": "meh",
+      "count": 0
+    }
+    this.movieEmotionObj["count"] ++;
+
+    let em:any = localStorage.getItem(this.movieId + "emotion")
+    em = JSON.parse(em)
+    if(em != null && em["emotion"] == "meh"){
+      // remove emotion
+      localStorage.removeItem(this.movieId + "emotion")
+      alert("You have untagged this emotion")
+    } else {
+      localStorage.setItem(this.movieId + "emotion", JSON.stringify(this.movieEmotionObj))
+      alert("You have tagged this movie as meh")
+    }
   }
 
   deleteThisMovie(){
     let res = confirm("Are you sure? You cannot undo this action")
     if(res == true){
-      localStorage.setItem('toDelete', this.movieId)
+      localStorage.setItem(this.movieId + 'toDelete', this.movieId)
     }
     alert(this.movieName + " has been deleted")
-
   }
 }
