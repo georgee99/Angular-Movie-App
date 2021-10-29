@@ -9,10 +9,11 @@
 
 a {
     font-size: 50px;
+    color: black;
 }
 
 a:hover {
-    color: aqua;
+    color: grey;
 }
 
 .empty {

@@ -1,17 +1,3 @@
-a {
-    font-size: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 15rem;
-    margin-left: 3rem;
-}
-
-a:hover {
-    color: aqua;
-    transform: scale(1.05);
-}
-
 .box {
     display: flex;
     flex-wrap: wrap;
@@ -63,7 +49,7 @@ img:hover{
 
 .emotions-container {
     align-items: center;
-    margin-left: 10rem;
+    margin-left: 5rem;
 }
 
 .emotions-container > h3 {
@@ -109,7 +95,6 @@ img:hover{
     color: white;
     margin: 2rem;
     padding: 0.5rem;
-    /* text-align: center; */
     background-color: #DB1F48;
     cursor: pointer;
     box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
@@ -117,13 +102,12 @@ img:hover{
 }
 
 .delete-button:hover{
-    /* background-color:#004369; */
     transform: translateY(-10px) scale(1.1)
 }
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 2rem;
     padding: 1rem;
     margin-left: 3rem;
@@ -137,12 +121,11 @@ img:hover{
 .sim-container > h1 {
     margin-left: 4rem;
     font-size: 40px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-family: 'Staatliches', cursive;
 
 }
 
-app-similar-card-item{
+app-similar-card-item {
     transition: transform .2s
 }
 
@@ -154,6 +137,30 @@ app-similar-card-item:hover {
     .details {
         max-width: 50%;
         padding: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .details>p{
+        text-align: justify;
+    }
+
+    .emoji-list{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .emotions-container{
+        text-align: justify;
+        margin-left: 0rem;
+
+    }
+    .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .cards {
