@@ -65,8 +65,15 @@ export class MoviePageComponent implements OnInit {
       "movieId": this.movieIdInt,
       "emotion": "happy"
     }
-    this.clickCount++;
-    localStorage.setItem(this.movieId + 'clickCountHappy', (this.clickCount).toString())
+    let count:any = localStorage.getItem(this.movieId + 'clickCountHappy')
+    if(count == null){ 
+      localStorage.setItem(this.movieId + 'clickCountHappy', "1")
+    }
+    else {
+      count++;
+      localStorage.setItem(this.movieId + 'clickCountHappy', count)
+    }
+
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "happy"){
@@ -84,8 +91,14 @@ export class MoviePageComponent implements OnInit {
       "movieId": this.movieIdInt,
       "emotion": "sad"
     }
-    this.clickCount++;
-    localStorage.setItem(this.movieId + 'clickCountSad', (this.clickCount).toString())
+    let count:any = localStorage.getItem(this.movieId + 'clickCountSad')
+    if(count == null){ 
+      localStorage.setItem(this.movieId + 'clickCountSad', "1")
+    }
+    else {
+      count++;
+      localStorage.setItem(this.movieId + 'clickCountSad', count)
+    }
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "sad"){
@@ -105,8 +118,14 @@ export class MoviePageComponent implements OnInit {
       "movieId": this.movieIdInt,
       "emotion": "meh"
     }
-    this.clickCount++;
-    localStorage.setItem(this.movieId + 'clickCountMeh', (this.clickCount).toString())
+    let count:any = localStorage.getItem(this.movieId + 'clickCountMeh')
+    if(count == null){ 
+      localStorage.setItem(this.movieId + 'clickCountMeh', "1")
+    }
+    else {
+      count++;
+      localStorage.setItem(this.movieId + 'clickCountMeh', count)
+    }
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "meh"){
@@ -121,24 +140,25 @@ export class MoviePageComponent implements OnInit {
 
   getSmileClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountHappy');
-    return count!=null ? Math.floor(count/2) : 0;
+    return count!=null ? Math.ceil(count/2) : 0;
   }
 
   getSadClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountSad');
-    return count!=null ? Math.floor(count/2) : 0;
+    return count!=null ? Math.ceil(count/2) : 0;
   }
 
   getMehClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountMeh');
-    return count!=null ? Math.floor(count/2) : "0";
+    return count!=null ? Math.ceil(count/2) : 0;
   }
 
   deleteThisMovie(){
     let res = confirm("Are you sure? You cannot undo this action")
     if(res == true){
       localStorage.setItem(this.movieId + 'toDelete', this.movieId)
+      console.log(localStorage.getItem(this.movieId + 'toDelete'))
     }
-    alert(this.movieName + " has been deleted")
+    // alert(this.movieName + " has been deleted")
   }
 }
