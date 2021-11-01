@@ -22,25 +22,21 @@ export class MoviePageComponent implements OnInit {
   faSmile = faSmile;
   faSadCry = faSadCry;
   faMeh = faMeh;
-  clickCount:number = 1;
 
   constructor(private route: ActivatedRoute, private movie: MovieService) { }
 
   ngOnInit(): void { 
-
+    // why do you need movieIdInt?, just rewrite movieId
     this.route.paramMap.subscribe(params => {
       this.movieId = params.get('id');
       this.movieIdInt = parseInt(this.movieId)
-      console.log("Movie Id: " + this.movieIdInt)
     })
 
     this.movie.getMovies().subscribe(movie => {
       this.newMovieArr = movie;
       for(let i = 0; i<this.newMovieArr.length; i++){
         if(this.movieIdInt === this.newMovieArr[i]["id"]){
-          console.log("movie id " + this.movieIdInt)
           this.movieName = this.newMovieArr[i]["original_title"]
-          console.log("movie name: " + this.movieName)
           this.moviePoster = this.newMovieArr[i]["poster_path"]
           this.movieOverview = this.newMovieArr[i]["overview"]
           this.moviePop = this.newMovieArr[i]["popularity"]
@@ -56,10 +52,6 @@ export class MoviePageComponent implements OnInit {
     })
   }
 
-  getLocalStorage():any{
-    return localStorage.getItem(this.movieId + "emotion")
-  }
-
   clickSmile():void {
     this.movieEmotionObj = {
       "movieId": this.movieIdInt,
@@ -69,10 +61,10 @@ export class MoviePageComponent implements OnInit {
     if(count == null){ 
       localStorage.setItem(this.movieId + 'clickCountHappy', "1")
     }
-    else {
-      count++;
-      localStorage.setItem(this.movieId + 'clickCountHappy', count)
-    }
+    // else {
+    //   count++;
+    //   localStorage.setItem(this.movieId + 'clickCountHappy', count)
+    // }
 
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
@@ -82,6 +74,8 @@ export class MoviePageComponent implements OnInit {
       alert("You have untagged this emotion")
     } else {
       localStorage.setItem(this.movieId + "emotion", JSON.stringify(this.movieEmotionObj))
+      count++;
+      localStorage.setItem(this.movieId + 'clickCountHappy', count)
       alert("You have tagged this movie as happy")
     }
   }
@@ -95,10 +89,10 @@ export class MoviePageComponent implements OnInit {
     if(count == null){ 
       localStorage.setItem(this.movieId + 'clickCountSad', "1")
     }
-    else {
-      count++;
-      localStorage.setItem(this.movieId + 'clickCountSad', count)
-    }
+    // else {
+    //   count++;
+    //   localStorage.setItem(this.movieId + 'clickCountSad', count)
+    // }
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "sad"){
@@ -107,6 +101,8 @@ export class MoviePageComponent implements OnInit {
       alert("You have untagged this emotion")
     } else {
       localStorage.setItem(this.movieId + "emotion", JSON.stringify(this.movieEmotionObj))
+      count++;
+      localStorage.setItem(this.movieId + 'clickCountSad', count)
       alert("You have tagged this movie as sad")
 
     }  
@@ -122,10 +118,10 @@ export class MoviePageComponent implements OnInit {
     if(count == null){ 
       localStorage.setItem(this.movieId + 'clickCountMeh', "1")
     }
-    else {
-      count++;
-      localStorage.setItem(this.movieId + 'clickCountMeh', count)
-    }
+    // else {
+    //   count++;
+    //   localStorage.setItem(this.movieId + 'clickCountMeh', count)
+    // }
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "meh"){
@@ -134,23 +130,25 @@ export class MoviePageComponent implements OnInit {
       alert("You have untagged this emotion")
     } else {
       localStorage.setItem(this.movieId + "emotion", JSON.stringify(this.movieEmotionObj))
+      count++;
+      localStorage.setItem(this.movieId + 'clickCountMeh', count)
       alert("You have tagged this movie as meh")
     }
   }
 
   getSmileClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountHappy');
-    return count!=null ? Math.ceil(count/2) : 0;
+    return count!=null ? Math.ceil(count) : 0;
   }
 
   getSadClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountSad');
-    return count!=null ? Math.ceil(count/2) : 0;
+    return count!=null ? Math.ceil(count) : 0;
   }
 
   getMehClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountMeh');
-    return count!=null ? Math.ceil(count/2) : 0;
+    return count!=null ? Math.ceil(count) : 0;
   }
 
   deleteThisMovie(){
@@ -159,6 +157,11 @@ export class MoviePageComponent implements OnInit {
       localStorage.setItem(this.movieId + 'toDelete', this.movieId)
       console.log(localStorage.getItem(this.movieId + 'toDelete'))
     }
-    // alert(this.movieName + " has been deleted")
+    alert(this.movieName + " has been deleted")
+  }
+
+  removeAllEmotions(){
+    localStorage.removeItem(this.movieId + "emotion")
+    alert("Emotions have been untagged")
   }
 }

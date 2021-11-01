@@ -10,7 +10,7 @@
     </div>
     <div class="emotions">
         <div class="emotions-container">
-            <h3>Tag this movie with an emotion below!</h3>
+            <h3>Tag this movie with an emotion!</h3>
             <div class="emoji-list">
                 <div class="count-num">
                     <fa-icon (click) = "clickSmile()" title="Happy" class="smileEm" [icon]="faSmile"></fa-icon>
@@ -26,6 +26,8 @@
                 </div>
             </div>
             <div class="delete-button-container">
+                <button class="remove-emotions-button" title="In case you forgot the tags" 
+                (click) = "removeAllEmotions()">Untag All <br/> Emotions</button>
                 <button class="delete-button"(click) = "deleteThisMovie()">REMOVE MOVIE</button>
             </div>
         </div>
