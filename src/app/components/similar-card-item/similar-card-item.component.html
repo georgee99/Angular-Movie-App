@@ -1,6 +1,6 @@
 <ng-container>
     <nz-card class="card-inside" nzHoverable [nzCover]="coverTemplate">
-      <nz-card-meta nzTitle="{{ movie.title }}" nzDescription="{{ movie.overview }}"></nz-card-meta>
+      <nz-card-meta nzTitle="{{ movie.title }}" nzDescription="{{ movie.overview | shortenPipe }}"></nz-card-meta>
     </nz-card>
     <ng-template #coverTemplate>
       <img alt="example" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />

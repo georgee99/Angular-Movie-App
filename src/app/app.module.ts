@@ -16,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FilterPipe } from './filter.pipe';
 import { Pipe, PipeTransform } from '@angular/core';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
+import { ShortenPipePipe } from './shorten-pipe.pipe';
 
 export const appRoutes: Routes = [
   {path: '', component: CardsComponent}, //Home page has empty string for route path
@@ -33,7 +34,8 @@ export const appRoutes: Routes = [
     CardsComponent,
     SimilarCardItemComponent,
     FilterPipe,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    ShortenPipePipe
   ],
   imports: [
     BrowserModule,
