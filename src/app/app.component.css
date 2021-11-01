@@ -8,6 +8,18 @@
         opacity: 0;
     }
   }
+
+  @keyframes movingGradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+  }
   
   .background {
     position: fixed;
@@ -20,7 +32,11 @@
     background: #FFF;
     overflow: hidden;
     z-index: -1;
+    background: linear-gradient(90deg, rgba(255,241,191,1) 17%, rgb(241, 202, 57) 100%);
+    background-size: 400% 400%;
+    animation: movingGradient 15s linear infinite alternate;
   }
+  
   .background li {
     position: absolute;
     top: 80vh;

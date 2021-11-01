@@ -24,8 +24,8 @@ export class CardsComponent implements OnInit {
         if(a !== null){
           this.myMovieArr = this.myMovieArr.filter((item: any) => item.id !==this.myMovieArr[i]["id"])
           i--;
-          // this.removedMovies.push(this.myMovieArr[i])
-          // localStorage.setItem('removedMoviesList', JSON.stringify(this.removedMovies))
+          this.removedMovies.push(this.myMovieArr[i])
+          localStorage.setItem('removedMoviesList', JSON.stringify(this.removedMovies))
         }
       }
     })
