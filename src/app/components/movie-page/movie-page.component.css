@@ -58,13 +58,12 @@ img:hover{
     font-size: 30px;
 }
 
-.emotions-container fa-icon {
+#icon{
     font-size: 50px;
     margin: 2rem 2rem 0 2rem;
     cursor: pointer;
     transition: 0.3s;
 }
-
 .emotions-container .smileEm:hover {
     color: #EDF939;
     transform: scale(1.05)
@@ -153,19 +152,20 @@ img:hover{
 .sim-container > h1 {
     margin-left: 4rem;
     font-size: 40px;
-    font-family: 'Staatliches', cursive;
+    font-family: cursive;
 
 }
 
-app-similar-card-item {
+#similar-card {
     transition: transform .2s;
 }
 
-app-similar-card-item:hover {
+#similar-card:hover{
     transform: scale(1.1);
+
 }
 
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 1200px){
     .details {
         max-width: 50%;
         padding: 1rem;

@@ -24,3 +24,9 @@ h1 {
     font-size: 60px;
     font-family: 'Staatliches', cursive;
 }
+
+@media screen and (max-width: 800px){
+    h1 {
+        display: none;
+    }
+}
