@@ -3,6 +3,6 @@
       <nz-card-meta nzTitle="{{ movie.title }}" nzDescription="{{ movie.overview | shortenPipe }}"></nz-card-meta>
     </nz-card>
     <ng-template #coverTemplate>
-      <img alt="example" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
+      <img alt="no image found" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
     </ng-template>
 </ng-container>

@@ -13,15 +13,15 @@
             <h3>Tag this movie with an emotion!</h3>
             <div class="emoji-list">
                 <div class="count-num">
-                    <fa-icon (click) = "clickSmile()" title="Happy" class="smileEm" [icon]="faSmile"></fa-icon>
+                    <fa-icon id="icon" (click) = "clickSmile()" title="Happy" class="smileEm" [icon]="faSmile"></fa-icon>
                     <p>{{ getSmileClickCount()}}</p>
                 </div>
                 <div class="count-num">
-                    <fa-icon (click) = "clickSad()" title="Sad" class="sadEm" [icon]="faSadCry"></fa-icon>
+                    <fa-icon id="icon" (click) = "clickSad()" title="Sad" class="sadEm" [icon]="faSadCry"></fa-icon>
                     <p>{{ getSadClickCount() }}</p>
                 </div>
                 <div class="count-num">
-                    <fa-icon (click) = "clickMeh()" title="Meh" class="mehEm" [icon]="faMeh"></fa-icon>
+                    <fa-icon id="icon" (click) = "clickMeh()" title="Meh" class="mehEm" [icon]="faMeh"></fa-icon>
                     <p>{{ getMehClickCount() }}</p>
                 </div>
             </div>
@@ -34,10 +34,10 @@
     </div>
 </div>
 
-<!-- Similar movies under here -->
+<!-- Similar movies -->
 <div class="sim-container">
     <h1>Similar Movies</h1>
     <div class="cards">
-        <app-similar-card-item *ngFor="let movie of similarMovies" [movie]="movie"></app-similar-card-item>
+        <app-similar-card-item id="similar-card" *ngFor="let movie of similarMovies" [movie]="movie"></app-similar-card-item>
     </div>
 </div>

@@ -1,7 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/services/movie.service';
 import { faSmile, faSadCry, faMeh } from '@fortawesome/free-solid-svg-icons';
+import { IMovie } from 'src/app/IMovie';
 
 @Component({
   selector: 'app-movie-page',
@@ -10,14 +11,14 @@ import { faSmile, faSadCry, faMeh } from '@fortawesome/free-solid-svg-icons';
 })
 export class MoviePageComponent implements OnInit {
   movieId: any;
-  movieIdInt: number;
-  movieName: any;
-  moviePoster: any;
-  movieOverview: any;
-  moviePop: number;
-  newMovieArr: any = [];
-  similarMovies: any = [];
-  movieEmotionObj: any = {};
+  movieIdInt!: number;
+  movieName!: string;
+  moviePoster!: string;
+  movieOverview!: string;
+  moviePop!: number;
+  newMovieArr: IMovie[] = [];
+  similarMovies: IMovie[] = [];
+  movieEmotionObj: Object = {};
   // Icons
   faSmile = faSmile;
   faSadCry = faSadCry;
@@ -26,7 +27,7 @@ export class MoviePageComponent implements OnInit {
   constructor(private route: ActivatedRoute, private movie: MovieService) { }
 
   ngOnInit(): void { 
-    // why do you need movieIdInt?, just rewrite movieId
+    // Getting movie id
     this.route.paramMap.subscribe(params => {
       this.movieId = params.get('id');
       this.movieIdInt = parseInt(this.movieId)
@@ -47,8 +48,8 @@ export class MoviePageComponent implements OnInit {
     // Retrieving similar movies
     this.movie.getSimilarMovies(this.movieId).subscribe(movie => {
       this.similarMovies = movie;
-      this.similarMovies = this.similarMovies.slice(0,6)
-      console.log(this.similarMovies)
+      this.similarMovies = this.similarMovies.slice(0,6);
+      console.log(`we have the movies ${this.similarMovies.length}`);
     })
   }
 
@@ -61,11 +62,6 @@ export class MoviePageComponent implements OnInit {
     if(count == null){ 
       localStorage.setItem(this.movieId + 'clickCountHappy', "1")
     }
-    // else {
-    //   count++;
-    //   localStorage.setItem(this.movieId + 'clickCountHappy', count)
-    // }
-
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "happy"){
@@ -89,10 +85,6 @@ export class MoviePageComponent implements OnInit {
     if(count == null){ 
       localStorage.setItem(this.movieId + 'clickCountSad', "1")
     }
-    // else {
-    //   count++;
-    //   localStorage.setItem(this.movieId + 'clickCountSad', count)
-    // }
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "sad"){
@@ -118,10 +110,6 @@ export class MoviePageComponent implements OnInit {
     if(count == null){ 
       localStorage.setItem(this.movieId + 'clickCountMeh', "1")
     }
-    // else {
-    //   count++;
-    //   localStorage.setItem(this.movieId + 'clickCountMeh', count)
-    // }
     let em:any = localStorage.getItem(this.movieId + "emotion")
     em = JSON.parse(em)
     if(em != null && em["emotion"] == "meh"){
