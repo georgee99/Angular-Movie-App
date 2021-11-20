@@ -106,8 +106,4 @@ export class CardsComponent implements OnInit {
     }
     return this.myMovieArrFiltered;
   }
-
-  search(value: string): void {
-    this.myMovieArrFiltered = this.myMovieArr.filter((val: any) => val.title.toLowerCase().includes(value));
-  }
 }
