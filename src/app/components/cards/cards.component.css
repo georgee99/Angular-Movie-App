@@ -54,3 +54,25 @@ label {
     }
     
 }
+
+.scroll-up-container {
+    padding: 2rem 0;
+    margin: auto;
+    text-align: center;
+}
+
+#scroll-up-btn {
+    background-color: white;
+    color: black;
+    opacity: 0.5;
+    font-size: 50px;
+    font-family: 'Staatliches', cursive;
+    letter-spacing: 5px;
+    border: solid 1px #fff;
+    transition: .5s;
+}
+
+#scroll-up-btn:hover {
+    cursor: pointer;
+    transform: translateY(-10px) scale(1.1)
+}

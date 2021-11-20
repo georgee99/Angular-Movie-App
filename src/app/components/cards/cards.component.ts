@@ -106,4 +106,12 @@ export class CardsComponent implements OnInit {
     }
     return this.myMovieArrFiltered;
   }
+
+  scrollUp(){
+        var rootElement = document.documentElement;
+        rootElement.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
 }
