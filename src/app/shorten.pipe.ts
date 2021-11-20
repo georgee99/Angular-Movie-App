@@ -3,7 +3,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 @Pipe({
   name: 'shortenPipe'
 })
-export class ShortenPipePipe implements PipeTransform {
+export class ShortenPipe implements PipeTransform {
 
   transform(value: string) {
     if(value.length >= 350){

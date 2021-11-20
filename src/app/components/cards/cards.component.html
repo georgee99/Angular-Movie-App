@@ -3,6 +3,9 @@
     <label id="cb-sad" nz-checkbox [(ngModel)]="enableFilterSad">Sad</label>
     <label id="cb-meh" nz-checkbox [(ngModel)]="enableFilterMeh">Meh</label>
 </div> -->
+<input class="search-bar" type="text" name="search" [(ngModel)]="searchText" 
+autocomplete="off" placeholder="Search">
+
 <div class="center">
     <label id="cb-hap" nz-checkbox [(ngModel)]="isCheckedHap" (ngModelChange)="happyMovieFilter()">
         Happy
@@ -17,6 +20,6 @@
 <div class="cards">
     <app-card-item class="the-cards" 
     *ngFor="let movie of ((isCheckedHap || isCheckedSad || isCheckedMeh) ? 
-                        myMovieArrFiltered : myMovieArr)"  
+                        myMovieArrFiltered : myMovieArr) | searchFilter: searchText" 
     [movie]="movie"></app-card-item>
 </div>

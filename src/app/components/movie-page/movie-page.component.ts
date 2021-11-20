@@ -18,6 +18,10 @@ export class MoviePageComponent implements OnInit {
   moviePop!: number;
   newMovieArr: IMovie[] = [];
   similarMovies: IMovie[] = [];
+  similarMovieID: any;
+  similarMovieName !: string;
+  similarMoviePoster !: string;
+  similarMovieOverview !: string;
   movieEmotionObj: Object = {};
   // Icons
   faSmile = faSmile;
@@ -144,8 +148,8 @@ export class MoviePageComponent implements OnInit {
     if(res == true){
       localStorage.setItem(this.movieId + 'toDelete', this.movieId)
       console.log(localStorage.getItem(this.movieId + 'toDelete'))
+      alert(this.movieName + " has been deleted")
     }
-    alert(this.movieName + " has been deleted")
   }
 
   removeAllEmotions(){

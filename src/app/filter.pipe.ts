@@ -18,7 +18,6 @@ export class FilterPipe implements PipeTransform {
         }
       }
       return certainMovies;
-      // return products.filter((item:any) => item.id > 550988);
     }
 
     if(!products || filterSad){

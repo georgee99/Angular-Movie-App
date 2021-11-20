@@ -4,7 +4,7 @@
         opacity: 1;
     }
     to {
-        transform: scale(20) rotate(960deg) translate(-50%, -50%);
+        transform: scale(30) rotate(960deg) translate(-50%, -50%);
         opacity: 0;
     }
   }
@@ -38,8 +38,8 @@
   
   .background li {
     position: absolute;
-    top: 80vh;
-    left: 45vw;
+    /* top: 80vh;
+    left: 45vw; */
     width: 10px;
     height: 10px;
     border: solid 1px #000;

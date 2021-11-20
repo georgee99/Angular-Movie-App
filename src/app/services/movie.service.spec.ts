@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpClient, HttpClientModule } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 import { of } from 'rxjs';
-import { MoviesInt } from '../MoviesInt';
+import { IMovie } from '../IMovie';
 import { MovieService } from './movie.service';
 
 describe('MovieService', () => {
@@ -33,9 +33,9 @@ describe('MovieService', () => {
       expect(result.length).toBeGreaterThan(0)
     })
     
-    const expectedMovies: MoviesInt[] = 
-    [{id: 580489, title: 'Venom: Let There Be Carnage', overview: "a"}] //Change this up later to match actual results, or to contain
-    spyOn(movieService, 'getMovies').and.returnValue(of(expectedMovies))
+    // const expectedMovies: IMovie[] = 
+    // [{id: 580489, title: 'Venom: Let There Be Carnage', overview: "a"}] //Change this up later to match actual results, or to contain
+    // spyOn(movieService, 'getMovies').and.returnValue(of(expectedMovies))
 
     // HttpClientSpy.get.and.returnValue(of(expectedMovies));
 

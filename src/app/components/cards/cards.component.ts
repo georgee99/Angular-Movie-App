@@ -14,7 +14,7 @@ export class CardsComponent implements OnInit {
   isCheckedHap: boolean = false;
   isCheckedSad: boolean = false;
   isCheckedMeh: boolean = false;
-
+  searchText: any;
   constructor(private movie: MovieService) { }
 
   ngOnInit(): void {
@@ -105,5 +105,9 @@ export class CardsComponent implements OnInit {
         }
     }
     return this.myMovieArrFiltered;
+  }
+
+  search(value: string): void {
+    this.myMovieArrFiltered = this.myMovieArr.filter((val: any) => val.title.toLowerCase().includes(value));
   }
 }
