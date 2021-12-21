@@ -20,9 +20,10 @@ autocomplete="off" placeholder="Search">
 <div class="cards">
     <app-card-item class="the-cards" 
     *ngFor="let movie of ((isCheckedHap || isCheckedSad || isCheckedMeh) ? 
-                        myMovieArrFiltered : myMovieArr) | searchFilter: searchText" 
-    [movie]="movie"></app-card-item>
+                        myMovieArrFiltered : myMovieArr) | searchFilter: searchText | paginate: { itemsPerPage: 20, currentPage: p }" 
+    [movie]="movie"></app-card-item>    
 </div>
+<pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
 
 <div class="scroll-up-container">
     <button id="scroll-up-btn" (click)="scrollUp()">Scroll Up</button>

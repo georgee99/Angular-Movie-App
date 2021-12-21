@@ -16,6 +16,13 @@ app-card-item:hover {
     transform: scale(1.05);
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-size: 1.5rem;
+}
+
 .center {
     display: flex;
     align-items: center;

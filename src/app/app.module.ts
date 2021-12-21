@@ -17,6 +17,7 @@ import { FilterPipe } from './filter.pipe';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { ShortenPipe as ShortenPipe } from './shorten.pipe';
 import { SearchFilterPipe } from './search-filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 export const appRoutes: Routes = [
   {path: '', component: CardsComponent}, //Home page has empty string for route path
@@ -45,6 +46,7 @@ export const appRoutes: Routes = [
     NzCheckboxModule,
     FormsModule,
     FontAwesomeModule,
+    NgxPaginationModule,
     RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
   providers: [HttpClientModule],

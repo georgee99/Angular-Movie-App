@@ -15,6 +15,7 @@ export class CardsComponent implements OnInit {
   isCheckedSad: boolean = false;
   isCheckedMeh: boolean = false;
   searchText: any;
+  p: number = 1;
   constructor(private movie: MovieService) { }
 
   ngOnInit(): void {
