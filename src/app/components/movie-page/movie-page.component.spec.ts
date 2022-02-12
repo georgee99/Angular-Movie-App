@@ -64,13 +64,13 @@ describe('MoviePageComponent', () => {
     })
   }))
 
-  // Spectator
+  // Using Spectator comparison
   it('should render movie title', ()=> {
     let title = spectator.query('h1');
     expect(title).toBeTruthy()
   })
 
-  it('spectator button test happy', ()=> {
+  it('should call respective functions after emotion buttons are clicked', ()=> {
     spectator.click('.smileEm')
     expect(spectator.component.clickSmile).toHaveBeenCalled()
 

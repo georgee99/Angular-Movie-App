@@ -57,45 +57,35 @@ describe('CardsComponent', () => {
     expect(theCards).toBeTruthy()
   })
 
-  it('should be able to check the happy checkbox and it still shows the happy movie', () => {
-    // arrange
-    mockMovieService.getMovies.and.returnValue(of(mockMovie));
-
-    // act
-    spectator.click('#cb-hap');
-
-    // assert
-    expect(spectator.component.myMovieArrFiltered.length).toBeLessThan(spectator.component.myMovieArr.length);
-    expect(spectator.component.myMovieArrFiltered.length).toBe(1);
-  })
-
   it('should be able to check the happy checkbox and it does\'t show any movies', () => {
     // arrange
-    // TODO: Do something to the movie to make it not happy
     mockMovieService.getMovies.and.returnValue(of(mockMovie));
     // act
     spectator.click('#cb-hap');
-
+    
     // assert
-    expect(spectator.component.myMovieArrFiltered.length).toBeLessThan(spectator.component.myMovieArr.length);
-    expect(spectator.component.myMovieArrFiltered.length).toBe(1);
+    expect(spectator.component.myMovieArrFiltered.length).toBe(0);
   })
-
+  
   it('should be able to check the sad checkbox and it only shows sad movies ', () => {
     // arrange
+    mockMovieService.getMovies.and.returnValue(of(mockMovie));
+    
     // act
+    spectator.click('#cb-sad');
+    
     // assert
+    expect(spectator.component.myMovieArrFiltered.length).toBe(0);
   })
 
   it('should be able to check the meh checkbox and it only shows meh movies ', () => {
     // arrange
+    mockMovieService.getMovies.and.returnValue(of(mockMovie));
+
     // act
+    spectator.click('#cb-sad');
+
     // assert
-  })
-
-  it('should ', () => {
-  })
-
-  it('should ', () => {
+    expect(spectator.component.myMovieArrFiltered.length).toBe(0);
   })
 });
