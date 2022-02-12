@@ -1,211 +1,208 @@
 .box {
-    display: flex;
-    flex-wrap: wrap;
-    align-content: center;
-    padding: 2rem 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  padding: 2rem 0;
 }
 
 .photo {
-    margin-right: 5%;
+  margin-right: 5%;
 }
 
 .photo-container {
-    display: flex;
-    align-items: center;
-    margin-left: 4rem;
+  display: flex;
+  align-items: center;
+  margin-left: 4rem;
 }
 
 img {
-    width: 100%;
-    height: 500px;
-    border-radius: 20px;
-    margin: 6px;
-    cursor: pointer;
-    transition: transform .2s
+  width: 100%;
+  height: 500px;
+  border-radius: 20px;
+  margin: 6px;
+  cursor: pointer;
+  transition: transform 0.2s;
 }
 
-img:hover{
-    transform: scale(1.1);
+img:hover {
+  transform: scale(1.1);
 }
 
 .details {
-   display: flex;
-   flex-direction: column;
-   max-width: 20%;
+  display: flex;
+  flex-direction: column;
+  max-width: 20%;
 }
 
 .details > h1 {
-    font-size: 40px;
-    font-family: monospace;
+  font-size: 40px;
+  font-family: monospace;
 }
 
 .details > p {
-    font-size: 20px;
-    font-family: cursive;
+  font-size: 20px;
+  font-family: cursive;
 }
 
 .emotions {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .emotions-container {
-    align-items: center;
-    margin-left: 5rem;  
+  align-items: center;
+  margin-left: 5rem;
 }
 
 .emotions-container > h3 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
-#icon{
-    font-size: 50px;
-    margin: 2rem 2rem 0 2rem;
-    cursor: pointer;
-    transition: 0.3s;
+#icon {
+  font-size: 50px;
+  margin: 2rem 2rem 0 2rem;
+  cursor: pointer;
+  transition: 0.3s;
 }
 .emotions-container .smileEm:hover {
-    color: #EDF939;
-    transform: scale(1.05)
+  color: #edf939;
+  transform: scale(1.05);
 }
 
 .emotions-container .sadEm:hover {
-    color: #9ACAD8;
-    transform: scale(1.05)
+  color: #9acad8;
+  transform: scale(1.05);
 }
 
 .emotions-container .mehEm:hover {
-    color: #808080;
-    transform: scale(1.05)
+  color: #808080;
+  transform: scale(1.05);
 }
 
 .emoji-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.count-num{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 0;
+.count-num {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0;
 }
 
-.count-num > p{
-    font-size:25px;
-    font-family: monospace;
+.count-num > p {
+  font-size: 25px;
+  font-family: monospace;
 }
 
 .delete-button-container {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .delete-button {
-    font-size: 20px;
-    font-family: 'Staatliches', cursive;
-    letter-spacing: 5px;
-    color: white;
-    margin: 2rem;
-    padding: 0.5rem;
-    background-color: #DB1F48;
-    cursor: pointer;
-    box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
-	transition: .5s;
+  font-size: 20px;
+  font-family: "Staatliches", cursive;
+  letter-spacing: 5px;
+  color: white;
+  margin: 2rem;
+  padding: 0.5rem;
+  background-color: #db1f48;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
 }
 
-.delete-button:hover{
-    transform: translateY(-10px) scale(1.1)
+.delete-button:hover {
+  transform: translateY(-10px) scale(1.1);
 }
 
-.remove-emotions-button{
-    font-size: 20px;
-    font-family: 'Staatliches', cursive;
-    letter-spacing: 5px;
-    color: white;
-    margin: 2rem;
-    padding: 0.5rem;
-    background-color: #727071;
-    cursor: pointer;
-    box-shadow: 0px 0px 0px rgba(0,0,0,0.4);
-	transition: .5s;
+.remove-emotions-button {
+  font-size: 20px;
+  font-family: "Staatliches", cursive;
+  letter-spacing: 5px;
+  color: white;
+  margin: 2rem;
+  padding: 0.5rem;
+  background-color: #727071;
+  cursor: pointer;
+  box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.4);
+  transition: 0.5s;
 }
 
-.remove-emotions-button:hover{
-    transform: translateY(-10px) scale(1.1)
+.remove-emotions-button:hover {
+  transform: translateY(-10px) scale(1.1);
 }
 
 .cards {
-    display: grid;
-    grid-template-columns: repeat(6, minmax(0, 1fr));
-    gap: 2rem;
-    padding: 1rem;
-    margin-left: 3rem;
-    margin-right: 3rem;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 2rem;
+  padding: 1rem;
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
-.sim-container{
-    margin: 2rem 0;
+.sim-container {
+  margin: 2rem 0;
 }
 
 .sim-container > h1 {
-    margin-left: 4rem;
-    font-size: 40px;
-    font-family: cursive;
-
+  margin-left: 4rem;
+  font-size: 40px;
+  font-family: cursive;
 }
 
 #similar-card {
-    transition: transform .2s;
+  transition: transform 0.2s;
 }
 
-#similar-card:hover{
-    transform: scale(1.1);
-
+#similar-card:hover {
+  transform: scale(1.1);
 }
 
-@media screen and (max-width: 1200px){
-    .details {
-        max-width: 50%;
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+@media screen and (max-width: 1200px) {
+  .details {
+    max-width: 50%;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .details>p{
-        text-align: justify;
-    }
+  .details > p {
+    text-align: justify;
+  }
 
-    .emoji-list{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .emoji-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .emotions-container{
-        text-align: justify;
-        margin-left: 0rem;
-        margin-top: 4rem;
+  .emotions-container {
+    text-align: justify;
+    margin-left: 0rem;
+    margin-top: 4rem;
+  }
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    }
-    .box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+    padding: 1rem;
+  }
 
-    .cards {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 2rem;
-        padding: 1rem;
-    }
-
-    .sim-container > h1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+  .sim-container > h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

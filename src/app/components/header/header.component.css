@@ -1,32 +1,32 @@
 .header {
-    display: flex;
+  display: flex;
 }
 
-.link{
-    flex: 1;
-    margin-left: 3rem;
+.link {
+  flex: 1;
+  margin-left: 3rem;
 }
 
 a {
-    font-size: 50px;
-    color: black;
+  font-size: 50px;
+  color: black;
 }
 
 a:hover {
-    color: grey;
+  color: grey;
 }
 
 .empty {
-    flex: 1;
+  flex: 1;
 }
 
 h1 {
-    font-size: 60px;
-    font-family: 'Staatliches', cursive;
+  font-size: 60px;
+  font-family: "Staatliches", cursive;
 }
 
-@media screen and (max-width: 800px){
-    h1 {
-        display: none;
-    }
+@media screen and (max-width: 800px) {
+  h1 {
+    display: none;
+  }
 }

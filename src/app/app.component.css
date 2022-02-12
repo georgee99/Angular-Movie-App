@@ -1,99 +1,103 @@
 @keyframes cube {
-    from {
-        transform: scale(0) rotate(0deg) translate(-50%, -50%);
-        opacity: 1;
-    }
-    to {
-        transform: scale(30) rotate(960deg) translate(-50%, -50%);
-        opacity: 0;
-    }
-  }
-
-  @keyframes movingGradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-  }
-  
-  .background {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    z-index: -1;
-    background: linear-gradient(90deg, rgb(255, 248, 224) 20%, rgb(241, 202, 57) 100%);
-    background-size: 400% 400%;
-    animation: movingGradient 20s linear infinite alternate;
-  }
-  
-  .background li {
-    position: absolute;
-    /* top: 80vh;
-    left: 45vw; */
-    width: 10px;
-    height: 10px;
-    border: solid 1px #000;
-    color: transparent;
-    transform-origin: top left;
+  from {
     transform: scale(0) rotate(0deg) translate(-50%, -50%);
-    animation: cube 10s ease-in forwards infinite;
+    opacity: 1;
   }
-  
-  .background li:nth-child(0) {
-    animation-delay: 0s;
-    left: 10vw;
-    top: 21vh;
-    border-color: #000;
+  to {
+    transform: scale(30) rotate(960deg) translate(-50%, -50%);
+    opacity: 0;
   }
-  
-  .background li:nth-child(1) {
-    animation-delay: 2s;
-    left: 1vw;
-    top: 58vh;
-    border-color: #000;
+}
+
+@keyframes movingGradient {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  .background li:nth-child(2) {
-    animation-delay: 4s;
-    left: 57vw;
-    top: 88vh;
-    border-color: #000;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  .background li:nth-child(3) {
-    animation-delay: 6s;
-    left: 80vw;
-    top: 90vh;
-    border-color: #000;
+  100% {
+    background-position: 0% 50%;
   }
-  
-  .background li:nth-child(4) {
-    animation-delay: 8s;
-    left: 95vw;
-    top: 51vh;
-    border-color: #000;
-  }
-  
-  .background li:nth-child(5) {
-    animation-delay: 10s;
-    left: 55vw;
-    top: 55vh;
-    border-color: #000;
-  }
-  
-  .background li:nth-child(6) {
-    animation-delay: 12s;
-    left: 60vw;
-    top: 50vh;
-    border-color: #000;
-  }
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  z-index: -1;
+  background: linear-gradient(
+    90deg,
+    rgb(255, 248, 224) 20%,
+    rgb(241, 202, 57) 100%
+  );
+  background-size: 400% 400%;
+  animation: movingGradient 20s linear infinite alternate;
+}
+
+.background li {
+  position: absolute;
+  /* top: 80vh;
+    left: 45vw; */
+  width: 10px;
+  height: 10px;
+  border: solid 1px #000;
+  color: transparent;
+  transform-origin: top left;
+  transform: scale(0) rotate(0deg) translate(-50%, -50%);
+  animation: cube 10s ease-in forwards infinite;
+}
+
+.background li:nth-child(0) {
+  animation-delay: 0s;
+  left: 10vw;
+  top: 21vh;
+  border-color: #000;
+}
+
+.background li:nth-child(1) {
+  animation-delay: 2s;
+  left: 1vw;
+  top: 58vh;
+  border-color: #000;
+}
+
+.background li:nth-child(2) {
+  animation-delay: 4s;
+  left: 57vw;
+  top: 88vh;
+  border-color: #000;
+}
+
+.background li:nth-child(3) {
+  animation-delay: 6s;
+  left: 80vw;
+  top: 90vh;
+  border-color: #000;
+}
+
+.background li:nth-child(4) {
+  animation-delay: 8s;
+  left: 95vw;
+  top: 51vh;
+  border-color: #000;
+}
+
+.background li:nth-child(5) {
+  animation-delay: 10s;
+  left: 55vw;
+  top: 55vh;
+  border-color: #000;
+}
+
+.background li:nth-child(6) {
+  animation-delay: 12s;
+  left: 60vw;
+  top: 50vh;
+  border-color: #000;
+}
