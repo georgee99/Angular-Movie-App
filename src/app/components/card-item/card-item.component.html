@@ -1,10 +1,3 @@
 <a *ngIf = "movie" [routerLink]="['moviePage', movie.id]">
-  <ng-container class="card">
-    <nz-card class="card-inside" nzHoverable [nzCover]="coverTemplate" >
-      <nz-card-meta nzTitle="{{ movie.title }}" nzDescription="{{ movie.overview | shortenPipe }}"></nz-card-meta>
-    </nz-card>
-    <ng-template #coverTemplate>
-      <img alt="example" src="https://image.tmdb.org/t/p/w500/{{ movie.poster_path }}" />
-    </ng-template>
-  </ng-container>
+  <app-similar-card-item [movie]="movie"></app-similar-card-item>
 </a>
