@@ -8,7 +8,7 @@ import { MovieService } from 'src/app/services/movie.service';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  myMovieArr: IMovie[] = []; // TODO: Sort this shit out dude... this is the LAST time you EVER use 'any'
+  myMovieArr: IMovie[] = [];
   // removedMovies: IMovie[] = [];
   myMovieArrFiltered: IMovie[] = [];
   isCheckedHap: boolean = false;
@@ -20,12 +20,12 @@ export class CardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.movie.getMovies().subscribe(movie => {
-      console.warn(movie)
+      console.warn(movie);
       this.myMovieArr = movie;
       for (let i = 0; i < this.myMovieArr.length; i++) {
-        let deleted: any = localStorage.getItem(this.myMovieArr[i]["id"] + "toDelete")
+        let deleted: any = localStorage.getItem(this.myMovieArr[i]["id"] + "toDelete");
         if (deleted !== null) {
-          this.myMovieArr = this.myMovieArr.filter((item: any) => item.id !== this.myMovieArr[i]["id"])
+          this.myMovieArr = this.myMovieArr.filter((item: any) => item.id !== this.myMovieArr[i]["id"]);
           i--;
         }
       }
@@ -34,27 +34,27 @@ export class CardsComponent implements OnInit {
 
   getSciMovies(): void {
     this.movie.getMovies().subscribe(movie => {
-      console.warn(movie)
+      console.warn(movie);
       this.myMovieArr = movie;
     })
   }
 
   happyMovieFilter(): IMovie[] {
-    if(this.isCheckedHap){
-      for(let i =0; i<this.myMovieArr.length; i++){
-        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion")
-        m = JSON.parse(m)
-        if(m !== null && m["emotion"] == "happy"){
-          this.myMovieArrFiltered.push(this.myMovieArr[i])  
+    if (this.isCheckedHap) {
+      for (let i = 0; i < this.myMovieArr.length; i++) {
+        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion");
+        m = JSON.parse(m);
+        if (m !== null && m["emotion"] == "happy") {
+          this.myMovieArrFiltered.push(this.myMovieArr[i]);  
         }
       }
     } else {
-      for(let i =0; i<this.myMovieArrFiltered.length;i++){
-        let m:any = localStorage.getItem(this.myMovieArrFiltered[i]["id"] + "emotion")
-        m = JSON.parse(m)
-        console.log(m)
-        if(m !== null && m["emotion"] == "happy"){
-          this.myMovieArrFiltered.splice(i,1)
+      for (let i = 0; i < this.myMovieArrFiltered.length; i++) {
+        let m:any = localStorage.getItem(this.myMovieArrFiltered[i]["id"] + "emotion");
+        m = JSON.parse(m);
+        console.log(m);
+        if (m !== null && m["emotion"] == "happy") {
+          this.myMovieArrFiltered.splice(i, 1);
           i--;
         } 
       }
@@ -63,20 +63,20 @@ export class CardsComponent implements OnInit {
   }
 
   sadMovieFilter(): IMovie[] {
-    if(this.isCheckedSad){
-      for(let i =0; i<this.myMovieArr.length; i++){
-        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion")
-        m = JSON.parse(m)
-        if(m !== null && m["emotion"] == "sad"){
-          this.myMovieArrFiltered.push(this.myMovieArr[i])
+    if (this.isCheckedSad) {
+      for (let i = 0; i < this.myMovieArr.length; i++) {
+        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion");
+        m = JSON.parse(m);
+        if (m !== null && m["emotion"] == "sad") {
+          this.myMovieArrFiltered.push(this.myMovieArr[i]);
         } 
       }    
     } else {
-      for(let i =0; i<this.myMovieArrFiltered.length;i++){
-        let m:any = localStorage.getItem(this.myMovieArrFiltered[i]["id"] + "emotion")
-        m = JSON.parse(m)
-        if(m !== null && m["emotion"] == "sad"){
-          this.myMovieArrFiltered.splice(i,1)
+      for (let i = 0; i< this.myMovieArrFiltered.length; i++) {
+        let m:any = localStorage.getItem(this.myMovieArrFiltered[i]["id"] + "emotion");
+        m = JSON.parse(m);
+        if (m !== null && m["emotion"] == "sad") {
+          this.myMovieArrFiltered.splice(i, 1);
           i--;
         } 
       }
@@ -85,20 +85,20 @@ export class CardsComponent implements OnInit {
   }
 
   mehMovieFilter(): IMovie[] {
-    if(this.isCheckedMeh){
-      for(let i =0; i<this.myMovieArr.length; i++){
-        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion")
-        m = JSON.parse(m)
-        if(m !== null && m["emotion"] == "meh"){
-          this.myMovieArrFiltered.push(this.myMovieArr[i])
+    if (this.isCheckedMeh) {
+      for (let i = 0; i < this.myMovieArr.length; i++) {
+        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion");
+        m = JSON.parse(m);
+        if (m !== null && m["emotion"] == "meh") {
+          this.myMovieArrFiltered.push(this.myMovieArr[i]);
         } 
       }    
     } else {
-        for(let i =0; i<this.myMovieArrFiltered.length;i++){
+        for (let i = 0; i < this.myMovieArrFiltered.length; i++) {
           let m:any = localStorage.getItem(this.myMovieArrFiltered[i]["id"] + "emotion")
           m = JSON.parse(m)
-          if(m !== null && m["emotion"] == "meh"){
-            this.myMovieArrFiltered.splice(i,1)
+          if (m !== null && m["emotion"] == "meh") {
+            this.myMovieArrFiltered.splice(i, 1);
             i--;
           }
         }
@@ -106,11 +106,11 @@ export class CardsComponent implements OnInit {
     return this.myMovieArrFiltered;
   }
 
-  scrollUp(){
-        var rootElement = document.documentElement;
-        rootElement.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        })
-    }
+  scrollUp() {
+    var rootElement = document.documentElement;
+    rootElement.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    })
+  }
 }
