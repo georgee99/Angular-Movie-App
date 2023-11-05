@@ -28,7 +28,7 @@ app-card-item:hover {
   align-items: center;
   justify-content: center;
   flex-direction: row;
-  gap: 1rem;
+  gap: 3rem;
   margin: 1rem;
 }
 
@@ -81,4 +81,9 @@ label {
 #scroll-up-btn:hover {
   cursor: pointer;
   transform: translateY(-10px) scale(1.1);
+}
+
+#cb-hap, #cb-sad, #cb-meh {
+  /* font-size: 1rem; */
+  transform: scale(2.5);
 }

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { forkJoin, Observable } from 'rxjs';
 import { map } from "rxjs/operators"; 
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class MovieService {
   constructor(private http:HttpClient) { }
 
   getMovies(): Observable<any>{
-    const url1 = "https://api.themoviedb.org/3/discover/movie?api_key=b45808cfc639faa44235410b835b0912&page=1&with_genres=878"
-    const url2 = "https://api.themoviedb.org/3/discover/movie?api_key=b45808cfc639faa44235410b835b0912&page=2&with_genres=878"
-    const url3 = "https://api.themoviedb.org/3/discover/movie?api_key=b45808cfc639faa44235410b835b0912&page=3&with_genres=878"
-    const url4 = "https://api.themoviedb.org/3/discover/movie?api_key=b45808cfc639faa44235410b835b0912&page=4&with_genres=878"
-    const url5 = "https://api.themoviedb.org/3/discover/movie?api_key=b45808cfc639faa44235410b835b0912&page=5&with_genres=878"
+    const url1 = `https://api.themoviedb.org/3/discover/movie?api_key=${environment.apiKey}&page=1&with_genres=878`
+    const url2 = `https://api.themoviedb.org/3/discover/movie?api_key=${environment.apiKey}&page=2&with_genres=878`
+    const url3 = `https://api.themoviedb.org/3/discover/movie?api_key=${environment.apiKey}&page=3&with_genres=878`
+    const url4 = `https://api.themoviedb.org/3/discover/movie?api_key=${environment.apiKey}&page=4&with_genres=878`
+    const url5 = `https://api.themoviedb.org/3/discover/movie?api_key=${environment.apiKey}&page=5&with_genres=878`
     
     const page1 = this.http.get(url1).pipe(map((data: any) => data.results));
     const page2 = this.http.get(url2).pipe(map((data: any) => data.results));
@@ -31,7 +32,17 @@ export class MovieService {
   }
 
   getSimilarMovies(id: number){
-    let url = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=b45808cfc639faa44235410b835b0912`
+    let url = `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${environment.apiKey}`
     return this.http.get(url).pipe(map((data: any) => data.results))
+  }
+
+  private selectedMovieId: number | null = null;
+
+  setSelectedMovieId(id: number) {
+    this.selectedMovieId = id;
+  }
+
+  getSelectedMovieId(): number | null {
+    return this.selectedMovieId;
   }
 }

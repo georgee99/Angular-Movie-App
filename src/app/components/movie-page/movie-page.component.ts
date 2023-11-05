@@ -11,8 +11,7 @@ import { IMovie } from 'src/app/IMovie';
 })
 export class MoviePageComponent implements OnInit {
   movieId: any;
-  movieIdInt!: number;
-  movieName!: string;
+  movieName: string | null = "";
   moviePoster!: string;
   movieOverview!: string;
   moviePop!: number;
@@ -33,14 +32,15 @@ export class MoviePageComponent implements OnInit {
   ngOnInit(): void { 
     // Getting movie id
     this.route.paramMap.subscribe(params => {
-      this.movieId = params.get('id');
-      this.movieIdInt = parseInt(this.movieId)
+      this.movieId = this.movie.getSelectedMovieId();
+      let paramTitle = params.get('movieName');
+      this.movieName = this.removeHyphens(paramTitle!);
     })
 
     this.movie.getMovies().subscribe(movie => {
       this.newMovieArr = movie;
-      for(let i = 0; i<this.newMovieArr.length; i++){
-        if(this.movieIdInt === this.newMovieArr[i]["id"]){
+      for (let i = 0; i<this.newMovieArr.length; i++){
+        if (this.movieId === this.newMovieArr[i]["id"]){
           this.movieName = this.newMovieArr[i]["original_title"]
           this.moviePoster = this.newMovieArr[i]["poster_path"]
           this.movieOverview = this.newMovieArr[i]["overview"]
@@ -59,11 +59,11 @@ export class MoviePageComponent implements OnInit {
 
   clickSmile():void {
     this.movieEmotionObj = {
-      "movieId": this.movieIdInt,
+      "movieId": this.movieId,
       "emotion": "happy"
     }
     let count:any = localStorage.getItem(this.movieId + 'clickCountHappy')
-    if(count == null){ 
+    if (count == null){ 
       localStorage.setItem(this.movieId + 'clickCountHappy', "1")
     }
     let em:any = localStorage.getItem(this.movieId + "emotion")
@@ -82,7 +82,7 @@ export class MoviePageComponent implements OnInit {
 
   clickSad():void {
     this.movieEmotionObj = {
-      "movieId": this.movieIdInt,
+      "movieId": this.movieId,
       "emotion": "sad"
     }
     let count:any = localStorage.getItem(this.movieId + 'clickCountSad')
@@ -107,7 +107,7 @@ export class MoviePageComponent implements OnInit {
   clickMeh(): void {
     console.log("Click Meh works")
     this.movieEmotionObj = {
-      "movieId": this.movieIdInt,
+      "movieId": this.movieId,
       "emotion": "meh"
     }
     let count:any = localStorage.getItem(this.movieId + 'clickCountMeh')
@@ -130,17 +130,17 @@ export class MoviePageComponent implements OnInit {
 
   getSmileClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountHappy');
-    return count!=null ? Math.ceil(count) : 0;
+    return count != null ? Math.ceil(count) : 0;
   }
 
   getSadClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountSad');
-    return count!=null ? Math.ceil(count) : 0;
+    return count != null ? Math.ceil(count) : 0;
   }
 
   getMehClickCount(){
     let count:any = localStorage.getItem(this.movieId + 'clickCountMeh');
-    return count!=null ? Math.ceil(count) : 0;
+    return count != null ? Math.ceil(count) : 0;
   }
 
   deleteThisMovie(){
@@ -155,5 +155,9 @@ export class MoviePageComponent implements OnInit {
   removeAllEmotions(){
     localStorage.removeItem(this.movieId + "emotion")
     alert("Emotions have been untagged")
+  }
+
+  removeHyphens(inputString: string): string {
+    return inputString.replace(/-/g, ' ');
   }
 }

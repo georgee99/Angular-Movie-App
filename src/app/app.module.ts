@@ -21,7 +21,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 
 export const appRoutes: Routes = [
   {path: '', component: CardsComponent}, //Home page has empty string for route path
-  {path: 'moviePage/:id', component: MoviePageComponent},
+  {path: ':movieName', component: MoviePageComponent},
   {path: '**', component: NotFoundPageComponent}
 ]
 
