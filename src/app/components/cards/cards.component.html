@@ -1,23 +1,29 @@
-<input class="search-bar" type="text" name="search" [(ngModel)]="searchText" 
-autocomplete="off" placeholder="Search">
+<input class="search-bar" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Search" />
 
 <div class="center">
-    <label id="cb-hap" nz-checkbox [(ngModel)]="isCheckedHap" (ngModelChange)="happyMovieFilter()">
+    <label>
+        <input type="checkbox" [checked]="filters.happy"
+            (change)="toggleFilter('happy', $any($event.target).checked)" />
         Happy
     </label>
-    <label id="cb-sad" nz-checkbox [(ngModel)]="isCheckedSad" (ngModelChange)="sadMovieFilter()">
+    <label>
+        <input type="checkbox" [checked]="filters.sad" (change)="toggleFilter('sad', $any($event.target).checked)" />
         Sad
     </label>
-    <label id="cb-meh" nz-checkbox [(ngModel)]="isCheckedMeh" (ngModelChange)="mehMovieFilter()">
+    <label>
+        <input type="checkbox" [checked]="filters.meh" (change)="toggleFilter('meh', $any($event.target).checked)" />
         Meh
     </label>
 </div>
+
 <div class="cards">
-    <app-card-item class="the-cards" 
-    *ngFor="let movie of ((isCheckedHap || isCheckedSad || isCheckedMeh) ? 
-                        myMovieArrFiltered : myMovieArr) | searchFilter: searchText | paginate: { itemsPerPage: 20, currentPage: p }" 
-    [movie]="movie"></app-card-item>    
+    <app-card-item class="the-cards" *ngFor="
+      let movie of filteredMovies
+        | searchFilter : searchText
+        | paginate : { itemsPerPage: 20, currentPage: p }
+    " [movie]="movie"></app-card-item>
 </div>
+
 <pagination-controls class="pagination" (pageChange)="p = $event"></pagination-controls>
 
 <div class="scroll-up-container">

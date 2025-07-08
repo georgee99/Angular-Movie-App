@@ -9,108 +9,61 @@ import { MovieService } from 'src/app/services/movie.service';
 })
 export class CardsComponent implements OnInit {
   myMovieArr: IMovie[] = [];
-  // removedMovies: IMovie[] = [];
-  myMovieArrFiltered: IMovie[] = [];
-  isCheckedHap: boolean = false;
-  isCheckedSad: boolean = false;
-  isCheckedMeh: boolean = false;
+  filteredMovies: IMovie[] = [];
   searchText: any;
   p: number = 1;
-  constructor(private movie: MovieService) { }
+
+  filters = {
+    happy: false,
+    sad: false,
+    meh: false
+  };
+
+  constructor(private movieService: MovieService) { }
 
   ngOnInit(): void {
-    this.movie.getMovies().subscribe(movie => {
-      console.warn(movie);
-      this.myMovieArr = movie;
-      for (let i = 0; i < this.myMovieArr.length; i++) {
-        let deleted: any = localStorage.getItem(this.myMovieArr[i]["id"] + "toDelete");
-        if (deleted !== null) {
-          this.myMovieArr = this.myMovieArr.filter((item: any) => item.id !== this.myMovieArr[i]["id"]);
-          i--;
-        }
-      }
-    })
+    this.movieService.getMovies().subscribe(movies => {
+      const visibleMovies = movies.filter(movie => {
+        const isDeleted = localStorage.getItem(`${movie.id}toDelete`);
+        return isDeleted === null;
+      });
+      this.myMovieArr = visibleMovies;
+      this.applyFilters();
+    });
   }
 
-  getSciMovies(): void {
-    this.movie.getMovies().subscribe(movie => {
-      console.warn(movie);
-      this.myMovieArr = movie;
-    })
+  toggleFilter(emotion: 'happy' | 'sad' | 'meh', checked: boolean): void {
+    this.filters[emotion] = checked;
+    this.applyFilters();
   }
 
-  happyMovieFilter(): IMovie[] {
-    if (this.isCheckedHap) {
-      for (let i = 0; i < this.myMovieArr.length; i++) {
-        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion");
-        m = JSON.parse(m);
-        if (m !== null && m["emotion"] == "happy") {
-          this.myMovieArrFiltered.push(this.myMovieArr[i]);  
-        }
-      }
-    } else {
-      for (let i = 0; i < this.myMovieArrFiltered.length; i++) {
-        let m:any = localStorage.getItem(this.myMovieArrFiltered[i]["id"] + "emotion");
-        m = JSON.parse(m);
-        console.log(m);
-        if (m !== null && m["emotion"] == "happy") {
-          this.myMovieArrFiltered.splice(i, 1);
-          i--;
-        } 
-      }
+  applyFilters(): void {
+    const activeEmotions = Object.entries(this.filters)
+      .filter(([_, value]) => value)
+      .map(([key]) => key);
+
+    if (activeEmotions.length === 0) {
+      this.filteredMovies = [...this.myMovieArr];
+      return;
     }
-    return this.myMovieArrFiltered;
-  }
 
-  sadMovieFilter(): IMovie[] {
-    if (this.isCheckedSad) {
-      for (let i = 0; i < this.myMovieArr.length; i++) {
-        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion");
-        m = JSON.parse(m);
-        if (m !== null && m["emotion"] == "sad") {
-          this.myMovieArrFiltered.push(this.myMovieArr[i]);
-        } 
-      }    
-    } else {
-      for (let i = 0; i< this.myMovieArrFiltered.length; i++) {
-        let m:any = localStorage.getItem(this.myMovieArrFiltered[i]["id"] + "emotion");
-        m = JSON.parse(m);
-        if (m !== null && m["emotion"] == "sad") {
-          this.myMovieArrFiltered.splice(i, 1);
-          i--;
-        } 
+    this.filteredMovies = this.myMovieArr.filter(movie => {
+      const stored = localStorage.getItem(`${movie.id}emotion`);
+      if (!stored) return false;
+
+      try {
+        const { emotion } = JSON.parse(stored);
+        return activeEmotions.includes(emotion);
+      } catch {
+        return false;
       }
-    }
-    return this.myMovieArrFiltered;
+    });
   }
 
-  mehMovieFilter(): IMovie[] {
-    if (this.isCheckedMeh) {
-      for (let i = 0; i < this.myMovieArr.length; i++) {
-        let m:any = localStorage.getItem(this.myMovieArr[i]["id"] + "emotion");
-        m = JSON.parse(m);
-        if (m !== null && m["emotion"] == "meh") {
-          this.myMovieArrFiltered.push(this.myMovieArr[i]);
-        } 
-      }    
-    } else {
-        for (let i = 0; i < this.myMovieArrFiltered.length; i++) {
-          let m:any = localStorage.getItem(this.myMovieArrFiltered[i]["id"] + "emotion")
-          m = JSON.parse(m)
-          if (m !== null && m["emotion"] == "meh") {
-            this.myMovieArrFiltered.splice(i, 1);
-            i--;
-          }
-        }
-    }
-    return this.myMovieArrFiltered;
-  }
-
-  scrollUp() {
-    var rootElement = document.documentElement;
-    rootElement.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    })
+  scrollUp(): void {
+    document.documentElement.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   }
 }

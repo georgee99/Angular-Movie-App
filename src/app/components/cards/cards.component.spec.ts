@@ -1,7 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { CardsComponent } from './cards.component';
 import { MovieService } from 'src/app/services/movie.service';
-import { FilterPipe } from 'src/app/filter.pipe';
 import { ShortenPipe } from 'src/app/shorten.pipe';
 import { Spectator, createComponentFactory, SpyObject } from '@ngneat/spectator';
 import { IMovie } from 'src/app/IMovie';
@@ -24,7 +23,7 @@ const mockMovie: IMovie = {
   "overview": "A ticking-time-bomb insomniac and a slippery soap salesman channel primal male aggression into a shocking new form of therapy. Their concept catches on, with underground \"fight clubs\" forming in every town, until an eccentric gets in the way and ignites an out-of-control spiral toward oblivion.",
   "popularity": 51.752,
   "poster_path": "/a26cQPRhJPX6GbWfQbvZdrrp9j9.jpg",
-  
+
   "status": "Released",
   "tagline": "Mischief. Mayhem. Soap.",
   "title": "Fight Club",
@@ -41,7 +40,7 @@ describe('CardsComponent', () => {
     component: CardsComponent,
     declarations: [CardsComponent],
     imports: [HttpClientModule],
-    providers: [ShortenPipe, FilterPipe],
+    providers: [ShortenPipe],
     mocks: [MovieService],
     detectChanges: false,
   });
@@ -62,20 +61,20 @@ describe('CardsComponent', () => {
     mockMovieService.getMovies.and.returnValue(of(mockMovie));
     // act
     spectator.click('#cb-hap');
-    
+
     // assert
-    expect(spectator.component.myMovieArrFiltered.length).toBe(0);
+    expect(spectator.component.filteredMovies.length).toBe(0);
   })
-  
+
   it('should be able to check the sad checkbox and it only shows sad movies ', () => {
     // arrange
     mockMovieService.getMovies.and.returnValue(of(mockMovie));
-    
+
     // act
     spectator.click('#cb-sad');
-    
+
     // assert
-    expect(spectator.component.myMovieArrFiltered.length).toBe(0);
+    expect(spectator.component.filteredMovies.length).toBe(0);
   })
 
   it('should be able to check the meh checkbox and it only shows meh movies ', () => {
@@ -86,6 +85,6 @@ describe('CardsComponent', () => {
     spectator.click('#cb-sad');
 
     // assert
-    expect(spectator.component.myMovieArrFiltered.length).toBe(0);
+    expect(spectator.component.filteredMovies.length).toBe(0);
   })
 });

@@ -1,7 +1,7 @@
 <div class="box">
     <div class="photo">
-         <div class="photo-container">
-             <img src="https://image.tmdb.org/t/p/w500/{{ moviePoster }}"/>
+        <div class="photo-container">
+            <img src="https://image.tmdb.org/t/p/w500/{{ moviePoster }}" />
         </div>
     </div>
     <div class="details">
@@ -13,22 +13,24 @@
             <h3>Tag this movie with an emotion!</h3>
             <div class="emoji-list">
                 <div class="count-num">
-                    <fa-icon id="icon" (click) = "clickSmile()" title="Happy" class="smileEm" [icon]="faSmile"></fa-icon>
+                    <fa-icon id="icon" (click)="clickEmotion('happy')" title="Happy" class="smileEm"
+                        [icon]="faSmile"></fa-icon>
                     <p>{{ getSmileClickCount()}}</p>
                 </div>
                 <div class="count-num">
-                    <fa-icon id="icon" (click) = "clickSad()" title="Sad" class="sadEm" [icon]="faSadCry"></fa-icon>
+                    <fa-icon id="icon" (click)="clickEmotion('sad')" title="Sad" class="sadEm"
+                        [icon]="faSadCry"></fa-icon>
                     <p>{{ getSadClickCount() }}</p>
                 </div>
                 <div class="count-num">
-                    <fa-icon id="icon" (click) = "clickMeh()" title="Meh" class="mehEm" [icon]="faMeh"></fa-icon>
+                    <fa-icon id="icon" (click)="clickEmotion('meh')" title="Meh" class="mehEm" [icon]="faMeh"></fa-icon>
                     <p>{{ getMehClickCount() }}</p>
                 </div>
             </div>
             <div class="delete-button-container">
-                <button class="remove-emotions-button" title="In case you forgot the tags" 
-                (click) = "removeAllEmotions()">Untag All <br/> Emotions</button>
-                <button class="delete-button"(click) = "deleteThisMovie()">REMOVE MOVIE</button>
+                <button class="remove-emotions-button" title="In case you forgot the tags"
+                    (click)="removeAllEmotions()">Untag All <br /> Emotions</button>
+                <button class="delete-button" (click)="deleteThisMovie()">REMOVE MOVIE</button>
             </div>
         </div>
     </div>
@@ -38,6 +40,7 @@
 <div class="sim-container">
     <h1>Similar Movies</h1>
     <div class="cards">
-        <app-similar-card-item id="similar-card" *ngFor="let movie of similarMovies" [movie]="movie"></app-similar-card-item>
+        <app-similar-card-item id="similar-card" *ngFor="let movie of similarMovies"
+            [movie]="movie"></app-similar-card-item>
     </div>
 </div>

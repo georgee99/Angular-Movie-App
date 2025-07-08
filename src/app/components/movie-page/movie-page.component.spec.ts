@@ -13,11 +13,11 @@ describe('MoviePageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ MoviePageComponent ],
-      imports: [ RouterModule.forRoot([]) , HttpClientModule]
-      
+      declarations: [MoviePageComponent],
+      imports: [RouterModule.forRoot([]), HttpClientModule]
+
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -43,41 +43,40 @@ describe('MoviePageComponent', () => {
     spyOn(component, 'deleteThisMovie');
     deleteButton.click();
     tick();
-    fixture.whenStable().then(()=> {
+    fixture.whenStable().then(() => {
       expect(component.deleteThisMovie).toHaveBeenCalled()
     })
-  }) )
+  }))
 
-  it('emotions button should be called', fakeAsync(()=>{
+  it('emotions button should be called', fakeAsync(() => {
     let smButton = fixture.debugElement.nativeElement.querySelector('.smileEm')
     let saButton = fixture.debugElement.nativeElement.querySelector('.sadEm')
     let meButton = fixture.debugElement.nativeElement.querySelector('.mehEm')
 
-    spyOn(component, 'clickSmile')
-    spyOn(component, 'clickSad')
-    spyOn(component, 'clickMeh');
+    spyOn(component, 'clickEmotion');
+
     smButton.click(); saButton.click(); meButton.click();
-    fixture.whenStable().then(()=> {
-      expect(component.clickSmile).toHaveBeenCalled()
-      expect(component.clickSad).toHaveBeenCalled()
-      expect(component.clickMeh).toHaveBeenCalled()
+    fixture.whenStable().then(() => {
+      expect(component.clickEmotion).toHaveBeenCalledWith('happy');
+      expect(component.clickEmotion).toHaveBeenCalledWith('sad');
+      expect(component.clickEmotion).toHaveBeenCalledWith('meh');
     })
   }))
 
   // Using Spectator comparison
-  it('should render movie title', ()=> {
+  it('should render movie title', () => {
     let title = spectator.query('h1');
     expect(title).toBeTruthy()
   })
 
-  it('should call respective functions after emotion buttons are clicked', ()=> {
+  it('should call respective functions after emotion buttons are clicked', () => {
     spectator.click('.smileEm')
-    expect(spectator.component.clickSmile).toHaveBeenCalled()
+    expect(spectator.component.clickEmotion).toHaveBeenCalledWith('happy')
 
     spectator.click('.sadEm')
-    expect(spectator.component.clickSad).toHaveBeenCalled()
+    expect(spectator.component.clickEmotion).toHaveBeenCalledWith('sad')
 
     spectator.click('.mehEm')
-    expect(spectator.component.clickMeh).toHaveBeenCalled()
+    expect(spectator.component.clickEmotion).toHaveBeenCalledWith('meh')
   })
 });

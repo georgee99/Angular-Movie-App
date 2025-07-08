@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { NotFoundPageComponent } from './not-found-page.component';
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
 
@@ -11,9 +10,9 @@ describe('NotFoundPageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NotFoundPageComponent ]
+      declarations: [NotFoundPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -27,7 +26,7 @@ describe('NotFoundPageComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should load 404 message', ()=> {
+  it('should load 404 message', () => {
     let title = spectator.query('p');
     expect(title).toContain("404")
   })

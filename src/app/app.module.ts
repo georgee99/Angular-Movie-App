@@ -13,16 +13,15 @@ import { CardsComponent } from './components/cards/cards.component';
 import { FormsModule } from '@angular/forms';
 import { SimilarCardItemComponent } from './components/similar-card-item/similar-card-item.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FilterPipe } from './filter.pipe';
 import { NotFoundPageComponent } from './components/not-found-page/not-found-page.component';
 import { ShortenPipe as ShortenPipe } from './shorten.pipe';
 import { SearchFilterPipe } from './search-filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
 
 export const appRoutes: Routes = [
-  {path: '', component: CardsComponent}, //Home page has empty string for route path
-  {path: ':movieName', component: MoviePageComponent},
-  {path: '**', component: NotFoundPageComponent}
+  { path: '', component: CardsComponent }, // Home page has empty string for route path
+  { path: ':movieName', component: MoviePageComponent },
+  { path: '**', component: NotFoundPageComponent }
 ]
 
 @NgModule({
@@ -33,7 +32,6 @@ export const appRoutes: Routes = [
     HeaderComponent,
     CardsComponent,
     SimilarCardItemComponent,
-    FilterPipe,
     NotFoundPageComponent,
     ShortenPipe,
     SearchFilterPipe
@@ -47,7 +45,7 @@ export const appRoutes: Routes = [
     FormsModule,
     FontAwesomeModule,
     NgxPaginationModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    RouterModule.forRoot(appRoutes, { enableTracing: true })
   ],
   providers: [HttpClientModule],
   bootstrap: [AppComponent]

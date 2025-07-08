@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { SimilarCardItemComponent } from './similar-card-item.component';
 
 describe('SimilarCardItemComponent', () => {
@@ -8,9 +7,9 @@ describe('SimilarCardItemComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SimilarCardItemComponent ]
+      declarations: [SimilarCardItemComponent]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
