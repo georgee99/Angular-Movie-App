@@ -38,13 +38,12 @@ export class MoviePageComponent implements OnInit {
 
     this.movie.getMovies().subscribe(movie => {
       this.newMovieArr = movie;
-      for (let i = 0; i < this.newMovieArr.length; i++) {
-        if (this.movieId === this.newMovieArr[i]["id"]) {
-          this.movieName = this.newMovieArr[i]["original_title"]
-          this.moviePoster = this.newMovieArr[i]["poster_path"]
-          this.movieOverview = this.newMovieArr[i]["overview"]
-          this.moviePop = this.newMovieArr[i]["popularity"]
-        }
+      const matchedMovie = this.newMovieArr.find(m => m.id === this.movieId);
+      if (matchedMovie) {
+        this.movieName = matchedMovie.original_title;
+        this.moviePoster = matchedMovie.poster_path;
+        this.movieOverview = matchedMovie.overview;
+        this.moviePop = matchedMovie.popularity;
       }
     })
 
@@ -79,18 +78,8 @@ export class MoviePageComponent implements OnInit {
     }
   }
 
-  getSmileClickCount() {
-    let count: any = localStorage.getItem(this.movieId + 'clickCountHappy');
-    return count != null ? Math.ceil(count) : 0;
-  }
-
-  getSadClickCount() {
-    let count: any = localStorage.getItem(this.movieId + 'clickCountSad');
-    return count != null ? Math.ceil(count) : 0;
-  }
-
-  getMehClickCount() {
-    let count: any = localStorage.getItem(this.movieId + 'clickCountMeh');
+  getEmotionClickCount(emotion: string): number {
+    let count: any = localStorage.getItem(this.movieId + 'clickCount' + emotion);
     return count != null ? Math.ceil(count) : 0;
   }
 
@@ -98,7 +87,6 @@ export class MoviePageComponent implements OnInit {
     let res = confirm("Are you sure? You cannot undo this action")
     if (res == true) {
       localStorage.setItem(this.movieId + 'toDelete', this.movieId)
-      console.log(localStorage.getItem(this.movieId + 'toDelete'))
       alert(this.movieName + " has been deleted")
     }
   }
